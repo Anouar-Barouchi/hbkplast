@@ -44,6 +44,7 @@ class ApiAuthController extends Controller
         $validator = Validator::make($request->all(), [
             'email'     => ['required', 'email'],
             'password'  => ['required'],
+            'device_token' => ['required'],
         ]); 
         if ($validator->fails()) {
             return response()->json(['errors' => $validator->errors()], 422);
@@ -61,6 +62,8 @@ class ApiAuthController extends Controller
         }
         $user = User::where('email', $request->email)->first();
         $token = $user->createToken('Personal Access Token')->plainTextToken;
+        $user->device_token = $request->device_token;
+        $user->save();
         return response([
             'user' => $user,
             'token' => $token,  
@@ -74,16 +77,18 @@ class ApiAuthController extends Controller
             'first_name'    => ['required'],
             'last_name'     => ['required'],
             'phone'         => ['required'],
+            'device_token' => ['required'],
         ]); 
         if ($validator->fails()) {
             return response()->json(['errors' => $validator->errors()], 422);
         }
-        $user = $this->auth->registerAndActivate($request->only([
+        $user = $this->auth->register($request->only([
             'first_name',
             'last_name',
             'email',
             'phone',
             'password',
+            'device_token',
         ]));
 
         $this->assignCustomerRole($user);
