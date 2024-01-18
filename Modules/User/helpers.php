@@ -1,4 +1,5 @@
 <?php
+use Illuminate\Support\Facades\Http;
 use Modules\User\Entities\User;
 
 if (! function_exists('permission_value')) {
