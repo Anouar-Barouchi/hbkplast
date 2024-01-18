@@ -84,14 +84,7 @@
                         @enderror
                     </div>
 
-                    <div class="form-group p-t-5">
-                        @captcha
-                        <input type="text" name="captcha" id="captcha" class="captcha-input" placeholder="{{ trans('storefront::layout.enter_captcha_code') }}">
-
-                        @error('captcha')
-                            <span class="error-message">{{ $message }}</span>
-                        @enderror
-                    </div>
+                    
 
                     <div class="form-check terms-and-conditions">
                         <input type="hidden" name="privacy_policy" value="0">

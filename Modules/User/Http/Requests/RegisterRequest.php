@@ -26,7 +26,7 @@ class RegisterRequest extends Request
             'email' => ['required', 'email', 'unique:users'],
             'phone' => ['required'],
             'password' => ['required', 'confirmed', 'min:6'],
-            'captcha' => ['required', 'captcha'],
+            // 'captcha' => ['required', 'captcha'],
             'privacy_policy' => ['accepted'],
         ];
     }

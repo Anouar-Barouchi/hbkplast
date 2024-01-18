@@ -112,7 +112,7 @@ abstract class BaseAuthController extends Controller
      */
     public function postRegister(RegisterRequest $request)
     {
-        $user = $this->auth->registerAndActivate($request->only([
+        $user = $this->auth->register($request->only([
             'first_name',
             'last_name',
             'email',
@@ -121,6 +121,7 @@ abstract class BaseAuthController extends Controller
         ]));
 
         $this->assignCustomerRole($user);
+
 
         event(new CustomerRegistered($user));
 

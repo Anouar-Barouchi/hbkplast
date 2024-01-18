@@ -182,7 +182,7 @@ class Money implements JsonSerializable
         $locale = $locale ?: locale();
 
         $numberFormatter = new NumberFormatter('en', NumberFormatter::CURRENCY);
-
+        // echo $this->amount;die;
         $amount = $numberFormatter->formatCurrency($this->amount, $currency);
 
         /**

@@ -5,7 +5,7 @@ return [
         'account_created' => 'Your account has been created.',
         'no_user_found' => 'No user with that email address belongs to our system.',
         'invalid_credentials' => 'Invalid email address or password.',
-        'account_not_activated' => 'Your account is not activated. Please check your email.',
+        'account_not_activated' => 'Your account is not activated. Please contact admin.',
         'account_is_blocked' => 'Your account is blocked for :delay seconds.',
         'check_email_to_reset_password' => 'Check your email address to reset password.',
         'invalid_reset_code' => 'Invalid or expired reset code.',
