@@ -35,6 +35,8 @@ class User extends EloquentUser implements AuthenticatableContract
         'device_token'
     ];
 
+    protected $appends = ['is_active'];
+
     /**
      * The attributes that should be mutated to dates.
      *
@@ -111,6 +113,11 @@ class User extends EloquentUser implements AuthenticatableContract
     public function isActivated()
     {
         return Activation::completed($this);
+    }
+
+    public function getIsActiveAttribute()
+    {
+        return $this->isActivated();
     }
 
     /**

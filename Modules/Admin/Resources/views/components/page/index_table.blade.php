@@ -1,4 +1,4 @@
-@section('content')
+`@section('content')
     <div class="row">
         <div class="btn-group pull-right">
             @if (isset($buttons, $name))
