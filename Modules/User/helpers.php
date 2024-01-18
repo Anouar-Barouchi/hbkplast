@@ -1,4 +1,5 @@
 <?php
+use Modules\User\Entities\User;
 
 if (! function_exists('permission_value')) {
     /**
@@ -19,5 +20,35 @@ if (! function_exists('permission_value')) {
         } elseif (! $value) {
             return -1;
         }
+    }
+}
+
+
+if (! function_exists('notify_users')) {
+    function notify_users($tokens = [], $title, $body)
+    {
+        if (count($tokens) == 0) {
+            $tokens = User::whereNotNull('device_token')->pluck('device_token')->unique();
+        }
+        
+        foreach ($tokens as $token) {
+            $serverKey = env('FCM_SERVER_KEY');
+
+            $response = Http::withHeaders([
+                'Content-Type' => 'application/json',
+                'Authorization' => 'key=' . $serverKey,
+            ])->post('https://fcm.googleapis.com/fcm/send', [
+                'to' => $token,
+                'notification' => [
+                    'body' => $body,
+                    'OrganizationId' => '2',
+                    'content_available' => true,
+                    'priority' => 'high',
+                    'title' => $title,
+                ],
+            ]);
+        }
+
+        return;
     }
 }
