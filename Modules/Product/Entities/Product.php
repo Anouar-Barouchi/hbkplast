@@ -132,7 +132,7 @@ class Product extends Model
             ->withPrice()
             ->withCount('options')
             ->with('reviews')
-            ->addSelect(['products.id', 'products.slug', 'products.in_stock', 'products.manage_stock', 'products.qty', 'products.new_from', 'products.new_to']);
+            ->addSelect(['products.id', 'products.slug', 'products.in_stock', 'products.manage_stock', 'products.qty', 'products.new_from', 'products.new_to', 'products.unit']);
     }
 
     public function scopeWithPrice($query)
