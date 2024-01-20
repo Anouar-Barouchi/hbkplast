@@ -29,7 +29,7 @@ class Sentinel implements Guard
         try {
             return SentinelFacade::guest();
         } catch (\Throwable $th) {
-            return redirect()->route('home')->withError($th->getMessage());
+            return false;
         }
         
     }
@@ -44,7 +44,7 @@ class Sentinel implements Guard
         try {
             return SentinelFacade::getUser();
         } catch (\Throwable $th) {
-            return redirect()->route('home')->withError($th->getMessage());
+            return null;
         }
     }
 
