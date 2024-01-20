@@ -41,7 +41,11 @@ class Sentinel implements Guard
      */
     public function user()
     {
-        return SentinelFacade::getUser();
+        try {
+            return SentinelFacade::getUser();
+        } catch (\Throwable $th) {
+            return redirect()->route('home')->withError($th->getMessage());
+        }
     }
 
     /**
