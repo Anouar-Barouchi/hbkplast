@@ -16,7 +16,11 @@ class Sentinel implements Guard
      */
     public function check()
     {
-        return SentinelFacade::check();
+        try {
+            return SentinelFacade::check();
+        } catch (\Throwable $th) {
+            return false;
+        }
     }
 
     /**
