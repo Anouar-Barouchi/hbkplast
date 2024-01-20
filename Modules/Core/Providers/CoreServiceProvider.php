@@ -21,6 +21,7 @@ class CoreServiceProvider extends ServiceProvider
         'auth' => \Modules\Core\Http\Middleware\Authenticate::class,
         'authapi' => ApiAuth::class,
         'admin' => \Modules\Core\Http\Middleware\AdminMiddleware::class,
+        'is_active' => \Modules\Core\Http\Middleware\IsActiveMiddlware::class,
         'guest' => \Modules\Core\Http\Middleware\GuestMiddleware::class,
         'can' => \Modules\Core\Http\Middleware\Authorization::class,
         'localize' => \Mcamara\LaravelLocalization\Middleware\LaravelLocalizationRoutes::class,

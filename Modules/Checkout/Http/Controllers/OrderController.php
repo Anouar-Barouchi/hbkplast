@@ -40,6 +40,13 @@ class OrderController extends Controller
      */
     public function store(Request $request)
     {
+        $user = auth()->user();
+        if (!$user->isActivated()) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Unauthorizes'
+            ], 403);
+        }
         $validator = Validator::make($request->all(), [
             'customer_email'    => ['required', 'email'],
             'customer_phone'    => ['required', 'string'],
@@ -139,6 +146,13 @@ class OrderController extends Controller
     public function storeCustomer(Request $request)
     {
         $user = Auth::guard('api')->user();
+
+        if (!$user->isActivated()) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Unauthorizes'
+            ], 403);
+        }
         $validator = Validator::make($request->all(), [
             'address'           => ['required', 'string'],
             'city'              => ['required', 'string'],
@@ -195,6 +209,9 @@ class OrderController extends Controller
             ]);
             foreach ($data as $key => $value) {
                 $product = Product::findOrfail($key);
+                if (($value % (int)$product->unit) != 0) {
+                    throw new \Exception("Quantity Missmatch", 1);
+                }
                 $cartItem = new stdClass;
                 $cartItem->qty = $value;
                 $cartItem->product_id = $product->id;
