@@ -134,7 +134,11 @@ class LayoutComposer
             return collect();
         }
 
-        return auth()->user()->wishlist()->pluck('product_id');
+        try {
+            return auth()->user()->wishlist()->pluck('product_id');
+        } catch (\Throwable $th) {
+            return collect();
+        }
     }
 
     private function getFooterMenuOne()
