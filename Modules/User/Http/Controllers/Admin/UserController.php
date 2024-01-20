@@ -2,6 +2,7 @@
 
 namespace Modules\User\Http\Controllers\Admin;
 
+use Illuminate\Http\Request;
 use Modules\User\Entities\User;
 use Modules\Admin\Traits\HasCrudActions;
 use Modules\User\Http\Requests\SaveUserRequest;
@@ -57,6 +58,23 @@ class UserController
 
         return redirect()->route('admin.users.index')
             ->withSuccess(trans('admin::messages.resource_saved', ['resource' => trans('user::users.user')]));
+    }
+
+    public function getNotify(Request $request)
+    {
+        return view('user::admin.users.notify');
+    }
+
+    public function notify(Request $request)
+    {
+        $request->validate([
+            'title' => ['required', 'string', 'max:255'],
+            'body' => ['required', 'string'],
+        ]);
+        notify_users($request->title, $request->body);
+        // dd(1);
+        return redirect()->route('admin.users.notifications')
+            ->withSuccess(trans('admin::messages.resource_sent', ['resource' => trans('user::users.notification')]));
     }
 
     /**

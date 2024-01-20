@@ -1,4 +1,5 @@
 <?php
+use FleetCart\Device;
 use Illuminate\Support\Facades\Http;
 use Modules\User\Entities\User;
 
@@ -26,10 +27,10 @@ if (! function_exists('permission_value')) {
 
 
 if (! function_exists('notify_users')) {
-    function notify_users($tokens = [], $title, $body)
+    function notify_users($title, $body, $tokens = [])
     {
         if (count($tokens) == 0) {
-            $tokens = User::whereNotNull('device_token')->pluck('device_token')->unique();
+            $tokens = Device::pluck('device_token')->merge(User::whereNotNull('device_token')->pluck('device_token'))->unique();
         }
         
         foreach ($tokens as $token) {

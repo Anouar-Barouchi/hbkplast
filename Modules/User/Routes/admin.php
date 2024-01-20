@@ -18,6 +18,18 @@ Route::get('users', [
     'middleware' => 'can:admin.users.index',
 ]);
 
+Route::get('notifications', [
+    'as' => 'admin.users.notifications',
+    'uses' => 'UserController@getNotify',
+    'middleware' => 'can:admin.users.index',
+]);
+
+Route::post('notify', [
+    'as' => 'admin.users.notify',
+    'uses' => 'UserController@notify',
+    'middleware' => 'can:admin.users.index',
+]);
+
 Route::get('users/create', [
     'as' => 'admin.users.create',
     'uses' => 'UserController@create',

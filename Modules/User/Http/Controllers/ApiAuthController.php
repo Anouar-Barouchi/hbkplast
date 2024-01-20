@@ -44,7 +44,7 @@ class ApiAuthController extends Controller
         $validator = Validator::make($request->all(), [
             'email'     => ['required', 'email'],
             'password'  => ['required'],
-            'device_token' => ['required'],
+            'device_token' => ['required', 'unique:users,device_token'],
         ]); 
         if ($validator->fails()) {
             return response()->json(['errors' => $validator->errors()], 422);
@@ -77,7 +77,7 @@ class ApiAuthController extends Controller
             'first_name'    => ['required'],
             'last_name'     => ['required'],
             'phone'         => ['required'],
-            'device_token' => ['required'],
+            'device_token' => ['required', 'unique:users,device_token'],
         ]); 
         if ($validator->fails()) {
             return response()->json(['errors' => $validator->errors()], 422);

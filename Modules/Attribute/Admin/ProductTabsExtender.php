@@ -20,6 +20,7 @@ class ProductTabsExtender
         if (! auth()->user()->hasAccess(['admin.attributes.index'])) {
             return;
         }
+        
 
         return tap(new Tab('attributes', trans('attribute::admin.tabs.product.attributes')), function (Tab $tab) {
             $tab->weight(30);

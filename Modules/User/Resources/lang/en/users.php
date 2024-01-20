@@ -4,6 +4,7 @@ return [
     'user' => 'User',
     'users' => 'Users',
     'profile' => 'Profile',
+    'notify' => 'Notify',
     'table' => [
         'first_name' => 'First Name',
         'last_name' => 'Last Name',

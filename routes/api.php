@@ -1,4 +1,8 @@
 <?php
+use FleetCart\Http\Controllers\DeviceController;
+
+
+Route::post('set-token', [DeviceController::class, 'store']);
 
 
 Route::group(['prefix' => 'v2/auth', 'middleware' => ['app_language']], function() {
