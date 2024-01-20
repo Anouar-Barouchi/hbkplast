@@ -26,7 +26,12 @@ class Sentinel implements Guard
      */
     public function guest()
     {
-        return SentinelFacade::guest();
+        try {
+            return SentinelFacade::guest();
+        } catch (\Throwable $th) {
+            return redirect()->route('home')->withError($th->getMessage());
+        }
+        
     }
 
     /**
@@ -36,11 +41,7 @@ class Sentinel implements Guard
      */
     public function user()
     {
-        try {
-            return SentinelFacade::getUser();
-        } catch (\Throwable $th) {
-            return redirect()->route('home')->withError($th->getMessage());
-        }
+        return SentinelFacade::getUser();
     }
 
     /**
