@@ -11,6 +11,7 @@ use Modules\Cart\Http\Requests\StoreCartItemRequest;
 use Modules\Coupon\Exceptions\MaximumSpendException;
 use Modules\Coupon\Exceptions\MinimumSpendException;
 use Modules\Cart\Http\Middleware\CheckProductIsInStock;
+use Modules\Product\Entities\Product;
 
 class CartItemController extends Controller
 {
@@ -37,6 +38,10 @@ class CartItemController extends Controller
      */
     public function store(StoreCartItemRequest $request)
     {
+        $product = Product::findOrFail($request->product_id);
+        if (($request->quantity % (int)$product->unit) != 0) {
+            throw new \Exception("Quantity Missmatch", 1);
+        }
         Cart::store($request->product_id, $request->qty, $request->options ?? []);
 
         return Cart::instance();
