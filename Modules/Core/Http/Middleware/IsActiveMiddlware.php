@@ -16,7 +16,7 @@ class IsActiveMiddlware
      */
     public function handle(Request $request, Closure $next)
     {
-        if (auth()->check() && auth()->user()->isCustomer()) {
+        if (auth()->check() && auth()->user()->isActivated()) {
             return redirect()->route('home')->withError(trans('user::messages.users.inactive_user'));
         }
         return $next($request);
