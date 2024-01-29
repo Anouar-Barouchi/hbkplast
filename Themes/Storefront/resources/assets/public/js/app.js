@@ -111,6 +111,7 @@ new Vue({
             this.modalProductImage = productImage;
             this.name = product.name;
             this.product = product;
+            this.quantity = product.unit;
             $('#productModal').modal('show'); // Show the modal using Bootstrap modal
         },
 

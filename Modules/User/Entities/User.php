@@ -114,7 +114,7 @@ class User extends EloquentUser implements AuthenticatableContract
     {
         return Activation::completed($this);
     }
-
+                    
     public function getIsActiveAttribute()
     {
         return $this->isActivated();

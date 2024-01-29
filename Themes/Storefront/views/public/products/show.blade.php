@@ -126,14 +126,15 @@
                                             <div class="input-group-quantity">
                                                 <input
                                                     type="text"
-                                                    :value="cartItemForm.qty"
-                                                    min="1"
+                                                    {{-- :value="cartItemForm.qty" --}}
+                                                    min="{{ $product->unit ?? 1 }}"
+                                                    value="{{ $product->unit ?? 1 }}"
                                                     max="{{ $product->manage_stock ? $product->qty : '' }}"
                                                     id="qty"
                                                     class="form-control input-number input-quantity"
                                                     @input="updateQuantity($event.target.value)"
-                                                    @keydown.up="updateQuantity(cartItemForm.qty + 1)"
-                                                    @keydown.down="updateQuantity(cartItemForm.qty - 1)"
+                                                    @keydown.up="updateQuantity(cartItemForm.qty + {{ $product->unit ?? 1 }})"
+                                                    @keydown.down="updateQuantity(cartItemForm.qty - {{ $product->unit ?? 1 }})"
                                                 >
 
                                                 <span class="btn-wrapper">

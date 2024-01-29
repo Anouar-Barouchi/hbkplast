@@ -80,7 +80,7 @@
                             <h6 v-html="product.name"></h6>
                         </div>
                         <div class="form-group m-3">
-                            <input type="number" v-model="quantity" :step="product.unit" class="form-control">
+                            <input type="number" v-model="quantity" :step="product.unit" v-bind:min="product.unit" class="form-control">
                         </div>
                         <div class="product-price" v-html="product.formatted_price"></div>
                     </div>
