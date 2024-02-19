@@ -2,7 +2,10 @@
 
 namespace Modules\User\Entities;
 
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Modules\City\Entities\City;
 use Modules\Order\Entities\Order;
+use Modules\State\Entities\State;
 use Modules\User\Admin\UserTable;
 use Modules\Review\Entities\Review;
 use Illuminate\Auth\Authenticatable;
@@ -32,7 +35,9 @@ class User extends EloquentUser implements AuthenticatableContract
         'last_name',
         'first_name',
         'permissions',
-        'device_token'
+        'device_token',
+        'state_id',
+        'city_id',
     ];
 
     protected $appends = ['is_active'];
@@ -251,5 +256,26 @@ class User extends EloquentUser implements AuthenticatableContract
     public function table()
     {
         return new UserTable($this->newQuery());
+    }
+
+
+    /**
+     * Get the state that owns the User
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function state(): BelongsTo
+    {
+        return $this->belongsTo(State::class, 'state_id', 'id');
+    }
+
+    /**
+     * Get the city that owns the User
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function city(): BelongsTo
+    {
+        return $this->belongsTo(City::class, 'city_id', 'id');
     }
 }

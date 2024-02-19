@@ -77,6 +77,8 @@ class ApiAuthController extends Controller
             'first_name'    => ['required'],
             'last_name'     => ['required'],
             'phone'         => ['required'],
+            'city_id'       => ['required', 'exists:cities,id'],
+            'state_id'       => ['required', 'exists:states,id'],
             'device_token' => ['required', 'unique:users,device_token'],
         ]); 
         if ($validator->fails()) {
@@ -89,6 +91,8 @@ class ApiAuthController extends Controller
             'phone',
             'password',
             'device_token',
+            'state_id',
+            'city_id',
         ]));
 
         $this->assignCustomerRole($user);
@@ -98,7 +102,7 @@ class ApiAuthController extends Controller
         return response()->json([
             'status' => true,
             'msg'    => 'Registred With success',
-            'user'   => $user,
+            'user'   => $user->refresh(),
             'token'  => $token
         ]);
     }
@@ -170,5 +174,16 @@ class ApiAuthController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+
+    public function getStates(Request $request)
+    {
+        if ($request->state_id) {
+            $cities = \DB::table('cities')->where('state_id', $request->state_id)->get();
+            return $cities;
+        }
+        $states = \DB::table('states')->where('country_id', 3)->get();
+        return $states;
     }
 }

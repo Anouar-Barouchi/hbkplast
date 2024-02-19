@@ -38,7 +38,7 @@ class OrderController extends Controller
      * @param Request $request
      * @return Renderable
      */
-    public function store(Request $request)
+    public function st  ore(Request $request)
     {
         $user = auth()->user();
         if (!$user->isActivated()) {
@@ -79,7 +79,7 @@ class OrderController extends Controller
                 'customer_last_name' => $request->last_name,
                 'billing_first_name' => $request->first_name,
                 'billing_last_name' => $request->last_name,
-                'billing_address_1' => $request->address,
+                'billing_address_1' => $user->state->name . ', ' . $user->city->name,
                 'billing_address_2' => null,
                 'billing_city' => $request->city,
                 'billing_state' => $request->state,
@@ -91,8 +91,8 @@ class OrderController extends Controller
                 'shipping_last_name' => $request->last_name,
                 'shipping_address_1' => $request->address,
                 'shipping_address_2' => null,
-                'shipping_city' => $request->city,
-                'shipping_state' => $request->state,
+                'shipping_city' => $user->city->name,
+                'shipping_state' => $user->state->name,
                 'shipping_country' => 'DZ',
                 'sub_total' => $subTotal,
                 'shipping_method' => 'local_pickup',
@@ -106,7 +106,7 @@ class OrderController extends Controller
                 'note' => $request->order_note ?? '',
             ]);
             foreach ($data as $key => $value) {
-                $product = Product::findOrfail($key);
+                $product = Product::findOrFail($key);
                 $cartItem = new stdClass;
                 $cartItem->qty = $value;
                 $cartItem->product_id = $product->id;
