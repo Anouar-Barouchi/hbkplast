@@ -23,6 +23,10 @@ class User extends EloquentUser implements AuthenticatableContract
 {
     use Authenticatable, HasApiTokens;
 
+    CONST RETAILER   = 0; 
+    CONST WHOLESALER = 1;
+
+
     /**
      * The attributes that are mass assignable.
      *
@@ -38,6 +42,7 @@ class User extends EloquentUser implements AuthenticatableContract
         'device_token',
         'state_id',
         'city_id',
+        'customer_type',
     ];
 
     protected $appends = ['is_active'];

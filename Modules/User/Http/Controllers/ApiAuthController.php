@@ -80,6 +80,7 @@ class ApiAuthController extends Controller
             'city_id'       => ['required', 'exists:cities,id'],
             'state_id'       => ['required', 'exists:states,id'],
             'device_token' => ['required', 'unique:users,device_token'],
+            'customer_type' => ['required', 'in:0,1'],
         ]); 
         if ($validator->fails()) {
             return response()->json(['errors' => $validator->errors()], 422);
@@ -93,6 +94,7 @@ class ApiAuthController extends Controller
             'device_token',
             'state_id',
             'city_id',
+            'customer_type',
         ]));
 
         $this->assignCustomerRole($user);
