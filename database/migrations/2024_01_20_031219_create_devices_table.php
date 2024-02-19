@@ -13,14 +13,14 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('devices', function (Blueprint $table) {
-            $table->id();
-            $table->text('device_token')->nullable()->unique();
-            $table->timestamps();
-        });
-        Schema::table('users', function (Blueprint $table) {
-            $table->unique('device_token');
-        });
+        // Schema::create('devices', function (Blueprint $table) {
+        //     $table->id();
+        //     $table->text('device_token')->nullable()->unique();
+        //     $table->timestamps();
+        // });
+        // Schema::table('users', function (Blueprint $table) {
+        //     // $table->unique('device_token');
+        // });
     }
 
     /**
