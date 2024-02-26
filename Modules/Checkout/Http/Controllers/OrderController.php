@@ -38,7 +38,7 @@ class OrderController extends Controller
      * @param Request $request
      * @return Renderable
      */
-    public function st  ore(Request $request)
+    public function store(Request $request)
     {
         $user = auth()->user();
         if (!$user->isActivated()) {
@@ -52,9 +52,6 @@ class OrderController extends Controller
             'customer_phone'    => ['required', 'string'],
             'first_name'        => ['required', 'string'],
             'last_name'         => ['required', 'string'],
-            'address'           => ['required', 'string'],
-            'city'              => ['required', 'string'],
-            'state'             => ['required', 'string'],
             'data'              => ['required', 'string'],
         ]);
         if ($validator->fails()) {
@@ -89,7 +86,7 @@ class OrderController extends Controller
                 'discount' => 0,
                 'shipping_first_name' => $request->first_name,
                 'shipping_last_name' => $request->last_name,
-                'shipping_address_1' => $request->address,
+                'shipping_address_1' => $user->state->name . ', ' . $user->city->name,
                 'shipping_address_2' => null,
                 'shipping_city' => $user->city->name,
                 'shipping_state' => $user->state->name,
@@ -181,7 +178,7 @@ class OrderController extends Controller
                 'customer_last_name' => $user->last_name,
                 'billing_first_name' => $user->first_name,
                 'billing_last_name' => $user->last_name,
-                'billing_address_1' => $request->address,
+                'billing_address_1' => $user->state->name . ', ' . $user->city->name,
                 'billing_address_2' => null,
                 'billing_city' => $request->city,
                 'billing_state' => $request->state,
