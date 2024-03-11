@@ -19,6 +19,10 @@ class RouteServiceProvider extends ServiceProvider
             ->namespace('FleetCart\Http\Controllers')
             ->prefix('api')
             ->group(base_path('routes/api.php'));
+        Route::middleware('api')
+            ->namespace('FleetCart\Http\Controllers')
+            ->prefix('driver-api')
+            ->group(base_path('routes/driver.php'));
         if (config('app.installed')) {
             $this->mapModuleRoutes();
             $this->mapThemeRoutes();

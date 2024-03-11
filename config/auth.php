@@ -45,6 +45,11 @@ return [
             'driver' => 'sanctum',
             'provider' => 'users',
         ],
+
+        'driver' => [
+            'driver' => 'sanctum',
+            'provider' => 'drivers',
+        ],
     ],
 
     /*
@@ -68,6 +73,11 @@ return [
         'users' => [
             'driver' => 'eloquent',
             'model' => Modules\User\Entities\User::class,
+        ],
+
+        'drivers' => [
+            'driver' => 'eloquent',
+            'model' => \FleetCart\Driver::class,
         ],
 
         // 'users' => [
