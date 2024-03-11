@@ -29,8 +29,7 @@
             columns: [
                 { data: 'checkbox', orderable: false, searchable: false, width: '3%' },
                 { data: 'id', width: '5%' },
-                { data: 'first_name', name: 'first_name' },
-                { data: 'last_name', name: 'last_name' },
+                { data: 'name', name: 'name' },
                 { data: 'email', name: 'email' },
                 { data: 'created', name: 'created_at' },
             ]
