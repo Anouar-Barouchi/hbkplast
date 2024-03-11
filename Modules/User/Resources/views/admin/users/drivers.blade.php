@@ -7,7 +7,7 @@
 @endcomponent
 
 @component('admin::components.page.index_table')
-    @slot('buttons', ['create'])
+    {{-- @slot('buttons', ['create']) --}}
     @slot('resource', 'drivers')
     @slot('name', trans('user::users.user'))
 
