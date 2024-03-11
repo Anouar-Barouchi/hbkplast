@@ -10,3 +10,5 @@ Route::get('hello', function (){
 Route::get('user', [DriverController::class, 'getUser'])->middleware('authapi:driver');
 
 Route::post('login', [DriverController::class, 'login']);
+
+Route::post('register', [DriverController::class, 'register']);

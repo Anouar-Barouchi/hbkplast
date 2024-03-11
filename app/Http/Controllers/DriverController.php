@@ -107,4 +107,27 @@ class DriverController extends Controller
 
         return response()->json(['message' => 'Invalid credentials'], 401);
     }
+
+
+    public function register(Request $request)
+    {
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'nullable|email|unique:drivers',
+            'phone' => 'required|string|unique:drivers',
+            'password' => 'required',
+        ]);
+
+        $user = Driver::create([
+            'name' => $request['name'],
+            'phone' => $request['phone'],
+            'email' => $request['email'] ?? null,
+            'password' => \Hash::make($request['password']),
+        ]);
+
+        // Optionally, you can generate a token for the newly registered user
+        $token = $user->createToken('api-token')->plainTextToken;
+
+        return response()->json(['token' => $token, 'user' => $user], 201);
+    }
 }
