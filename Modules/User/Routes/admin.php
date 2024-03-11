@@ -59,6 +59,12 @@ Route::get('users/{id}/edit', [
     'middleware' => 'can:admin.users.edit',
 ]);
 
+Route::get('drivers/{id}/edit', [
+    'as' => 'admin.drivers.edit',
+    'uses' => 'DriverController@edit',
+    'middleware' => 'can:admin.users.edit',
+]);
+
 Route::put('users/{id}/edit', [
     'as' => 'admin.users.update',
     'uses' => 'UserController@update',
