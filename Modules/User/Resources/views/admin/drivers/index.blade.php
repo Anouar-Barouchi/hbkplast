@@ -9,7 +9,7 @@
 @component('admin::components.page.index_table')
     {{-- @slot('buttons', ['create']) --}}
     @slot('resource', 'drivers')
-    @slot('name', trans('user::users.user'))
+    @slot('name', trans('user::users.driver'))
 
     @slot('thead')
         <tr>

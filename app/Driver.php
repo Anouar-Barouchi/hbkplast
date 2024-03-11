@@ -5,6 +5,7 @@ namespace FleetCart;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Laravel\Sanctum\HasApiTokens;
+use Modules\User\Admin\UserTable;
 
 class Driver extends Authenticatable
 {
@@ -29,4 +30,14 @@ class Driver extends Authenticatable
         'lat'               => 'decimal:7',
         'lng'               => 'decimal:7',
     ];
+
+    /**
+     * Get table data for the resource
+     *
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function table()
+    {
+        return new UserTable($this->newQuery());
+    }
 }
