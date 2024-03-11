@@ -128,6 +128,18 @@ class DriverController extends Controller
         // Optionally, you can generate a token for the newly registered user
         $token = $user->createToken('api-token')->plainTextToken;
 
-        return response()->json(['token' => $token, 'user' => $user], 201);
+        return response()->json(['token' => $token, 'user' => $user], 200);
+    }
+
+    public function setDeviceToken(Request $request)
+    {
+        $request->validate([
+            'device_token' => 'required|string',
+        ]);
+        $user = auth()->user();
+        $user->device_token = $request->device_token;
+        $user->save();
+
+        return response()->json(['user' => $user], 200);
     }
 }

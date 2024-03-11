@@ -12,3 +12,4 @@ Route::get('user', [DriverController::class, 'getUser'])->middleware('authapi:dr
 Route::post('login', [DriverController::class, 'login']);
 
 Route::post('register', [DriverController::class, 'register']);
+Route::post('set-token', [DriverController::class, 'setDeviceToken'])->middleware('authapi:driver');
