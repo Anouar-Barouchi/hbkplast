@@ -5,7 +5,7 @@ namespace Modules\User\Http\Controllers\Admin;
 use FleetCart\Driver;
 use Modules\Admin\Traits\HasCrudActions;
 
-class UserController
+class DriverController
 {
     use HasCrudActions;
 
