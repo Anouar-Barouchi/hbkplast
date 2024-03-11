@@ -60,6 +60,11 @@ class UserController
             ->withSuccess(trans('admin::messages.resource_saved', ['resource' => trans('user::users.user')]));
     }
 
+    public function index_drivers(Request $request)
+    {
+        return view('user::admin.users.drivers');
+    }
+
     public function getNotify(Request $request)
     {
         return view('user::admin.users.notify');

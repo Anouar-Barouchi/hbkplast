@@ -18,6 +18,12 @@ Route::get('users', [
     'middleware' => 'can:admin.users.index',
 ]);
 
+Route::get('drivers', [
+    'as' => 'admin.users.drivers',
+    'uses' => 'UserController@index_drivers',
+    'middleware' => 'can:admin.users.index',
+]);
+
 Route::get('notifications', [
     'as' => 'admin.users.notifications',
     'uses' => 'UserController@getNotify',

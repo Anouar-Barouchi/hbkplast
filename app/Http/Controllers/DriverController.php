@@ -95,10 +95,10 @@ class DriverController extends Controller
     public function login(Request $request)
     {
         $request->validate([
-            'email' => 'required|email',
+            'phone' => 'required',
             'password' => 'required|string',
         ]);
-        $user = Driver::where('email', $request->email)->first();
+        $user = Driver::where('phone', $request->phone)->first();
 
         if ($user && \Hash::check($request->password, $user->password)) {
             $token = $user->createToken('api-token')->plainTextToken;
