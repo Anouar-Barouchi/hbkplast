@@ -31,7 +31,7 @@ class SidebarExtender extends BaseSidebarExtender
 
                 $item->item(trans('user::sidebar.drivers'), function (Item $item) {
                     $item->weight(5);
-                    $item->route('admin.users.drivers');
+                    $item->route('admin.drivers.index');
                     $item->authorize(
                         $this->auth->hasAccess('admin.users.index')
                     );

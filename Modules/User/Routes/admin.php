@@ -19,7 +19,7 @@ Route::get('users', [
 ]);
 
 Route::get('drivers', [
-    'as' => 'admin.users.drivers',
+    'as' => 'admin.drivers.index',
     'uses' => 'UserController@index_drivers',
     'middleware' => 'can:admin.users.index',
 ]);
