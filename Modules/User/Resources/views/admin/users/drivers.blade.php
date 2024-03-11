@@ -26,7 +26,7 @@
 
 @push('scripts')
     <script>
-        new DataTable('#users-table .table', {
+        new DataTable('#drivers-table .table', {
             columns: [
                 { data: 'checkbox', orderable: false, searchable: false, width: '3%' },
                 { data: 'id', width: '5%' },
