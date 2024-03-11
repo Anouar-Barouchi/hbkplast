@@ -29,6 +29,14 @@ class SidebarExtender extends BaseSidebarExtender
                     );
                 });
 
+                $item->item(trans('user::sidebar.drivers'), function (Item $item) {
+                    $item->weight(5);
+                    $item->route('admin.users.index');
+                    $item->authorize(
+                        $this->auth->hasAccess('admin.users.index')
+                    );
+                });
+
                 // notification
                 $item->item(trans('user::sidebar.notifications'), function (Item $item) {
                     $item->weight(5);
