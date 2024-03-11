@@ -3,6 +3,7 @@
 namespace Modules\User\Http\Controllers\Admin;
 
 use FleetCart\Driver;
+use Illuminate\Http\Request;
 use Modules\Admin\Traits\HasCrudActions;
 
 class DriverController
@@ -31,6 +32,11 @@ class DriverController
     protected $viewPath = 'user::admin.drivers';
 
     
+
+    public function edit(Request $request, Driver $driver)
+    {
+        return false;
+    }
 
    
 
