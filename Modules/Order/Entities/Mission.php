@@ -10,6 +10,8 @@ class Mission extends Model
 {
     use HasFactory;
 
+    protected $with = ['order'];
+
     protected static function booted()
     {
         static::created(function ($mission) {

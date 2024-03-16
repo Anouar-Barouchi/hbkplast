@@ -45,6 +45,6 @@ class Driver extends Authenticatable
 
     public function missions()
     {
-        return $this->hasMany(Mission   ::class);
+        return $this->hasMany(Mission::class);
     }
 }
