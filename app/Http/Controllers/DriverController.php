@@ -153,4 +153,29 @@ class DriverController extends Controller
             'data' => $missions,
         ]);
     }
+
+    public function acceptMission(Request $request)
+    {
+        $validated = $request->validate([
+            'mission_id' => 'required|exists:missions,id',
+        ]);
+
+        $mission = Mission::findOrFail($validated['mission_id']);
+
+        // Check if the authenticated driver is assigned to this mission
+        if ($mission->driver_id !== Auth::guard('api')->id()) {
+            return response()->json(['message' => 'Unauthorized - This mission is not assigned to you.'], 403);
+        }
+
+        // Verify the mission's status is 'pending' before allowing acceptance
+        if ($mission->status !== 'pending') {
+            return response()->json(['message' => 'This mission cannot be accepted. It is either already accepted or completed.'], 422);
+        }
+
+        // Update the mission's status to 'accepted'
+        $mission->status = 'accepted';
+        $mission->save();
+
+        return response()->json(['message' => 'Mission accepted successfully']);
+    }
 }
