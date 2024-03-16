@@ -244,7 +244,7 @@ class Order extends Model
 
     public function scopeWithoutCanceledOrders($query)
     {
-        return $query->whereNotIn('status', [self::CANCELED, self::REFUNDED]);
+        return $query->whereNotIn('status', [self::CANCELED]);
     }
 
     public function storeProductsApi($cartItem)

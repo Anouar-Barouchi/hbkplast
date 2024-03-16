@@ -201,7 +201,7 @@ class OrderController extends Controller
                 'currency' => 'DZD',
                 'currency_rate' => 1,
                 'locale' => 'ar',
-                'status' => Order::PENDING_PAYMENT,
+                'status' => Order::PENDING,
                 'note' => $request->order_note ?? '',
             ]);
             foreach ($data as $key => $value) {

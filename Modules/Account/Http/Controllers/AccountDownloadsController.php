@@ -40,7 +40,7 @@ class AccountDownloadsController
         return auth()->user()
             ->orders()
             ->with('downloads')
-            ->where('status', Order::COMPLETED)
+            ->where('status', Order::FINISHED)
             ->latest()
             ->get()
             ->pluck('downloads.*.file')
