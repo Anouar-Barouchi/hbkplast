@@ -296,14 +296,5 @@ class OrderController extends Controller
 
 
 
-    public function getMissions(Request $request)
-    {
-        $user = Auth::guard('api')->user();
-        $missions = $user->missions()->orderBy('id', 'desc')->paginate(30);
-
-        return response()->json([
-            'success' => true,
-            'data' => $missions,
-        ]);
-    }
+    
 }

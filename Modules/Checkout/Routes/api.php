@@ -6,4 +6,3 @@ use Illuminate\Support\Facades\Route;
 Route::post('createcustomerorder', 'OrderController@storeCustomer')->middleware('authapi:api');
 Route::get('getorders', 'OrderController@getOrders')->middleware('authapi:api');
 
-Route::get('get-missions', 'OrderController@getMissions')->middleware('authapi:api');

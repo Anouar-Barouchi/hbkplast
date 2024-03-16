@@ -142,4 +142,15 @@ class DriverController extends Controller
 
         return response()->json(['user' => $user], 200);
     }
+
+    public function getMissions(Request $request)
+    {
+        $user = auth()->user();
+        $missions = $user->missions()->orderBy('id', 'desc')->paginate(30);
+
+        return response()->json([
+            'success' => true,
+            'data' => $missions,
+        ]);
+    }
 }
