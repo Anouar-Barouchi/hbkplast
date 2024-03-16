@@ -5,6 +5,7 @@ namespace FleetCart\Http\Controllers;
 use FleetCart\Driver;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
+use Modules\Order\Entities\Mission;
 
 
 class DriverController extends Controller
@@ -163,7 +164,7 @@ class DriverController extends Controller
         $mission = Mission::findOrFail($validated['mission_id']);
 
         // Check if the authenticated driver is assigned to this mission
-        if ($mission->driver_id !== Auth::guard('api')->id()) {
+        if ($mission->driver_id !== auth()->user()->id()) {
             return response()->json(['message' => 'Unauthorized - This mission is not assigned to you.'], 403);
         }
 
