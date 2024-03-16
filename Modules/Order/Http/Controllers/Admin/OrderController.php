@@ -40,7 +40,7 @@ class OrderController
 
     public function show($id)
     {
-        $order = $this->query()->findOrFail($id); // Use the existing query method to include with relations
+        $order = Order::findOrFail($id); // Use the existing query method to include with relations
         $drivers = Driver::all(); // Retrieve all drivers
 
         return view("{$this->viewPath}.show", compact('order', 'drivers'));
