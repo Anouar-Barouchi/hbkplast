@@ -16,8 +16,8 @@ return new class extends Migration
         Schema::create('missions', function (Blueprint $table) {
             $table->id();
             $table->string('code')->unique();
-            $table->foreignId('order_id')->constrained()->onDelete('cascade');
-            $table->foreignId('driver_id')->constrained()->onDelete('cascade');
+            $table->foreignId('order_id');
+            $table->foreignId('driver_id');
             $table->string('status')->default('pending');
             $table->timestamps();
         });
