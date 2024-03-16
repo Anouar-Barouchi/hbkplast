@@ -13,7 +13,7 @@ class Mission extends Model
     protected static function booted()
     {
         static::created(function ($mission) {
-            $mission->mission_code = 'MISS/' . str_pad($mission->id, 7, '0', STR_PAD_LEFT);
+            $mission->code = 'MISS/' . str_pad($mission->id, 7, '0', STR_PAD_LEFT);
             $mission->save();
         });
     }
