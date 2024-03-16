@@ -40,4 +40,7 @@ return [
     'coupon' => 'Coupon',
     'tax' => 'Tax',
     'total' => 'Total',
+    'assign_driver' => 'Assign Driver',
+    'select_driver' => 'Select Driver',
+    'assign' => 'Assign',
 ];

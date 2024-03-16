@@ -1,4 +1,4 @@
-<div class="driver-assignment-section">
+<div class="driver-assignment-section mt-5">
     <h3>{{ trans('order::orders.assign_driver') }}</h3>
     <form action="{{ route('admin.orders.assign_driver', $order) }}" method="POST">
         @csrf
