@@ -18,7 +18,7 @@ class Mission extends Model
         });
     }
 
-    protected $fillable = ['order_id', 'mission_id'];
+    protected $fillable = ['order_id', 'driver_id'];
     
     protected static function newFactory()
     {
