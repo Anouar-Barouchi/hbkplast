@@ -24,13 +24,21 @@ class Order extends Model
 {
     use SoftDeletes;
 
-    const CANCELED = 'canceled';
-    const COMPLETED = 'completed';
-    const ON_HOLD = 'on_hold';
-    const PENDING = 'pending';
-    const PENDING_PAYMENT = 'pending_payment';
-    const PROCESSING = 'processing';
-    const REFUNDED = 'refunded';
+    // const CANCELED = 'canceled';
+    // const COMPLETED = 'completed';
+    // const ON_HOLD = 'on_hold';
+    // const PENDING = 'pending';
+    // const PENDING_PAYMENT = 'pending_payment';
+    // const PROCESSING = 'processing';
+    // const REFUNDED = 'refunded';
+
+    const CANCELED      = 'canceled';
+    const PENDING       = 'pending';
+    const ACCEPTED      = 'accepted';
+    const CHARGED       = 'charged';
+    CONST ONROAD        = 'on_road';
+    CONST DISCHARGED    = 'discharged';
+    CONST FINISHED      = 'finished';
 
     /**
      * The attributes that aren't mass assignable.
