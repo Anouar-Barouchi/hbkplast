@@ -2,10 +2,10 @@
 
 return [
     'canceled' => 'Canceled',
-    'completed' => 'Completed',
-    'on_hold' => 'On Hold',
     'pending' => 'Pending',
-    'pending_payment' => 'Pending Payment',
-    'processing' => 'Processing',
-    'refunded' => 'Refunded',
+    'accepted' => 'Accepted',
+    'charged' => 'Charged',
+    'on_road' => 'On Road',
+    'discharged' => 'Discharged',
+    'finished' => 'Finished',
 ];
