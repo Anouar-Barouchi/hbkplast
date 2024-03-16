@@ -2,6 +2,7 @@
 
 namespace Modules\Order\Entities;
 
+use FleetCart\Driver;
 use Modules\Cart\CartTax;
 use Modules\Cart\CartItem;
 use Modules\Support\Money;
@@ -306,4 +307,16 @@ class Order extends Model
 
         return new OrderTable($query);
     }
+
+    public function driver()
+    {
+        return $this->belongsTo(Driver::class, 'driver_id');
+    }
+
+    public function mission()
+    {
+        return $this->hasOne(Mission::class);
+    }
+
+
 }

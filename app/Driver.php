@@ -5,6 +5,7 @@ namespace FleetCart;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Laravel\Sanctum\HasApiTokens;
+use Modules\Order\Entities\Mission;
 use Modules\User\Admin\UserTable;
 
 class Driver extends Authenticatable
@@ -39,5 +40,11 @@ class Driver extends Authenticatable
     public function table()
     {
         return new UserTable($this->newQuery());
+    }
+
+
+    public function missions()
+    {
+        return $this->hasMany(Mission   ::class);
     }
 }

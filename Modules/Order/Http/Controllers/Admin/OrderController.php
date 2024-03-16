@@ -3,8 +3,12 @@
 namespace Modules\Order\Http\Controllers\Admin;
 
 use FleetCart\Driver;
+use Illuminate\Support\Facades\DB;
+use Modules\Order\Entities\Mission;
 use Modules\Order\Entities\Order;
 use Modules\Admin\Traits\HasCrudActions;
+use Illuminate\Http\Request;
+
 
 class OrderController
 {
@@ -48,15 +52,28 @@ class OrderController
 
     public function assignDriver(Request $request, $orderId)
     {
-        $order = Order::findOrFail($orderId); // Ensure you get the correct order instance
+        $order = Order::findOrFail($orderId);
+
         $validated = $request->validate([
             'driver_id' => 'required|exists:drivers,id',
         ]);
 
-        $order->driver_id = $validated['driver_id'];
-        $order->save();
+        if ($order->mission) {
+            return redirect()->route('admin.orders.show', $order)->withErrors(['error' => trans('order::messages.driver_already_assigned')]);
+        }
 
-        // Redirect back with a success message
+        DB::transaction(function () use ($order, $validated) {
+            $mission = new Mission([
+                'order_id' => $order->id,
+                'driver_id' => $validated['driver_id'],
+            ]);
+            $mission->save();
+
+            // Update the order's driver_id if necessary
+            $order->driver_id = $validated['driver_id'];
+            $order->save();
+        });
+
         return redirect()->route('admin.orders.show', $order)->withSuccess(trans('order::messages.driver_assigned'));
     }
 }
