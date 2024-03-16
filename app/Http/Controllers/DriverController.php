@@ -164,7 +164,7 @@ class DriverController extends Controller
         $mission = Mission::findOrFail($validated['mission_id']);
 
         // Check if the authenticated driver is assigned to this mission
-        if ($mission->driver_id !== auth()->user()->id()) {
+        if ($mission->driver_id !== auth()->user()->id) {
             return response()->json(['message' => 'Unauthorized - This mission is not assigned to you.'], 403);
         }
 
