@@ -31,3 +31,11 @@ Route::get('orders/{order}/print', [
     'uses' => 'OrderPrintController@show',
     'middleware' => 'can:admin.orders.show',
 ]);
+
+Route::post('orders/{order}/assign-driver', [
+    'as' => 'admin.orders.assign_driver',
+    'uses' => 'OrderController@assignDriver',
+    'middleware' => 'can:admin.orders.edit',
+]);
+
+
