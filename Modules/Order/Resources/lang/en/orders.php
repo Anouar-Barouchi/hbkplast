@@ -43,4 +43,6 @@ return [
     'assign_driver' => 'Assign Driver',
     'select_driver' => 'Select Driver',
     'assign' => 'Assign',
+    'assigned_driver' => 'Assigned Driver',
+    'mission_code' => 'Mission Code'
 ];
