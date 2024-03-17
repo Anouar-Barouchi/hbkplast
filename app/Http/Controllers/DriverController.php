@@ -202,6 +202,7 @@ class DriverController extends Controller
 
         // Define valid status transitions
         $statusTransitions = [
+            'pending' => ['accepted'],
             'accepted' => ['charged'],
             'charged' => ['on_road'],
             'on_road' => ['discharged'],
