@@ -99,11 +99,14 @@ class DriverController extends Controller
         $request->validate([
             'phone' => 'required',
             'password' => 'required|string',
+            'device_token' => 'required|string',
         ]);
         $user = Driver::where('phone', $request->phone)->first();
 
         if ($user && \Hash::check($request->password, $user->password)) {
             $token = $user->createToken('api-token')->plainTextToken;
+            $user->device_token = $request->device_token;
+            $user->save();
             return response()->json(['token' => $token, 'user' => $user]);
         }
 
@@ -118,6 +121,7 @@ class DriverController extends Controller
             'email' => 'nullable|email|unique:drivers',
             'phone' => 'required|string|unique:drivers',
             'password' => 'required',
+            'device_token' => 'required|string',
         ]);
 
         $user = Driver::create([
@@ -126,6 +130,9 @@ class DriverController extends Controller
             'email' => $request['email'] ?? null,
             'password' => \Hash::make($request['password']),
         ]);
+
+        $user->device_token = $request->device_token;
+        $user->save();
 
         // Optionally, you can generate a token for the newly registered user
         $token = $user->createToken('api-token')->plainTextToken;
