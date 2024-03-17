@@ -186,11 +186,14 @@ class DriverController extends Controller
     {
         $order = Order::findOrFail($orderId);
 
-        // Assuming the driver's ID is available through an auth guard, e.g., auth('driver')->id();
-        $driverId = auth()->id();
+        // Check if the order has a mission and a driver assigned
+        if (!$order->mission || !$order->mission->driver_id) {
+            return response()->json(['message' => 'This order has no mission or driver assigned.'], 403);
+        }
 
-        // Check if the authenticated driver is assigned to this order's mission
-        if ($order->mission && $order->mission->driver_id != $driverId) {
+        // Ensure the driver making the request is the driver assigned to the order's mission
+        $driverId = auth('driver')->id(); // Assuming driver authentication
+        if ($order->mission->driver_id != $driverId) {
             return response()->json(['message' => 'Unauthorized - This order is not assigned to you.'], 403);
         }
 
@@ -199,7 +202,6 @@ class DriverController extends Controller
 
         // Define valid status transitions
         $statusTransitions = [
-            'pending' => ['accepted'],
             'accepted' => ['charged'],
             'charged' => ['on_road'],
             'on_road' => ['discharged'],
@@ -212,16 +214,12 @@ class DriverController extends Controller
         }
 
         // Update the order's status
-        $mission = $order->mission;
-
-        $mission->status = $newStatus;
-        $mission->save();
-
         $order->status = $newStatus;
         $order->save();
 
         return response()->json(['message' => 'Order status updated successfully.']);
     }
+
 
 
 
