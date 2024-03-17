@@ -38,4 +38,7 @@ Route::post('orders/{order}/assign-driver', [
     'middleware' => 'can:admin.orders.edit',
 ]);
 
+Route::delete('orders/{order}/unassign-driver', 'OrderController@unassignDriver')->middleware('can:admin.orders.edit')->name('admin.orders.unassign_driver');
+
+
 
