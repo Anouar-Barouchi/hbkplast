@@ -6,6 +6,7 @@ use FleetCart\Driver;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Modules\Order\Entities\Mission;
+use Modules\Order\Entities\Order;
 
 
 class DriverController extends Controller
@@ -179,4 +180,52 @@ class DriverController extends Controller
 
         return response()->json(['message' => 'Mission accepted successfully']);
     }
+
+
+    public function changeOrderStatus(Request $request, $orderId)
+    {
+        $order = Order::findOrFail($orderId);
+
+        // Assuming the driver's ID is available through an auth guard, e.g., auth('driver')->id();
+        $driverId = auth()->id();
+
+        // Check if the authenticated driver is assigned to this order's mission
+        if ($order->mission && $order->mission->driver_id != $driverId) {
+            return response()->json(['message' => 'Unauthorized - This order is not assigned to you.'], 403);
+        }
+
+        $newStatus = $request->input('status');
+        $currentStatus = $order->status;
+
+        // Define valid status transitions
+        $statusTransitions = [
+            'accepted' => ['charged'],
+            'charged' => ['on_road'],
+            'on_road' => ['discharged'],
+            'discharged' => ['finished'],
+        ];
+
+        // Check if the new status is a valid transition from the current status
+        if (!isset($statusTransitions[$currentStatus]) || !in_array($newStatus, $statusTransitions[$currentStatus])) {
+            return response()->json(['message' => 'Invalid status transition.'], 422);
+        }
+
+        // Update the order's status
+        $mission = $order->mission;
+
+        $mission->status = $newStatus;
+        $mission->save();
+
+        $order->status = $newStatus;
+        $order->save();
+
+        return response()->json(['message' => 'Order status updated successfully.']);
+    }
+
+
+
+
+
+
+
 }

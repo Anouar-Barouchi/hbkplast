@@ -16,3 +16,7 @@ Route::post('set-token', [DriverController::class, 'setDeviceToken'])->middlewar
 Route::get('get-missions', [DriverController::class, 'getMissions'])->middleware('authapi:driver');
 Route::post('accept-mission', [DriverController::class, 'acceptMission'])->middleware('authapi:driver');
 
+Route::post('orders/{order}/change-status', [DriverController::class, 'changeOrderStatus'])->middleware('authapi:driver');
+
+
+
