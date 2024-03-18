@@ -184,6 +184,9 @@ class DriverController extends Controller
         // Update the mission's status to 'accepted'
         $mission->status = 'accepted';
         $mission->save();
+        $order = $mission->order;
+        $order->status = 'accepted';
+        $order->save();
 
         return response()->json(['message' => 'Mission accepted successfully']);
     }
