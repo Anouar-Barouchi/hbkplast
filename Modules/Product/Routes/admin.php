@@ -37,3 +37,6 @@ Route::delete('products/{ids}', [
     'uses' => 'ProductController@destroy',
     'middleware' => 'can:admin.products.destroy',
 ]);
+
+Route::get('/products/print-barcode/{product}', 'ProductController@printBarcode')->name('products.print-barcode')->middleware('can:admin.products.index');
+
