@@ -76,6 +76,7 @@ class SuggestionsResponse implements Responsable
                 'base_image' => $product->getBaseImageAttribute(),
                 'is_out_of_stock' => $product->isOutOfStock(),
                 'url' => $product->url(),
+                'barcode' => $product->barcode,
             ];
         });
     }
