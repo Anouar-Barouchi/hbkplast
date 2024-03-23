@@ -34,6 +34,7 @@ class QueryStringFilter
         'new_from',
         'new_to',
         'unit',
+        'barcode'
     ];
 
     public function sort($query, $sortType)
