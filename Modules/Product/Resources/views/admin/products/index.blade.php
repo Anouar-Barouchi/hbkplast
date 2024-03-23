@@ -33,7 +33,8 @@
                     searchable: false,
                     defaultContent: '',
                     render: function (data, type, row) {
-                        return `<button onclick="printBarcode('${row.barcode}')">Print Barcode</button>`;
+                        const rowDataJsonString = JSON.stringify(row).replace(/'/g, "&#39;");
+                        return `<button onclick="printRowData('${rowDataJsonString}')">Print Row Data</button>`;
                     },
                 },
             ],
