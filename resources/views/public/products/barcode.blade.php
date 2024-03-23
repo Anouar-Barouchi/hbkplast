@@ -7,8 +7,7 @@
     <div class="barcode-container">
         {{-- Output barcode HTML --}}
         {!! $barcodeHTML !!}
-        <p>{{ $product->name }}</p>
-        <p>Barcode: {{ $product->barcode }}</p>
+        <p> {{ $product->barcode }}</p>
     </div>
 </body>
 </html>
