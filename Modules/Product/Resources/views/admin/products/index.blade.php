@@ -31,7 +31,9 @@
             ],
         });
 
-        function printBarcode(barcode) {
+        function printBarcode(barcode, event) {
+            event.stopPropagation(); // Prevent the event from propagating to parent elements
+
             const printWindow = window.open('', '_blank');
             printWindow.document.write(`<html><head><title>Print Barcode</title></head><body><p>${barcode}</p></body></html>`);
             printWindow.document.close();
