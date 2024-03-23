@@ -159,7 +159,7 @@ class Product extends Model
 
     public function scopeWithPrice($query)
     {
-        $query->addSelect(['products.price', 'products.special_price', 'products.special_price_type', 'products.selling_price', 'products.special_price_start', 'products.special_price_end']);
+        $query->addSelect(['products.price', 'products.special_price', 'products.special_price_type', 'products.selling_price', 'products.special_price_start', 'products.special_price_end', 'products.barcode']);
     }
 
     public function scopeWithName($query)
