@@ -25,10 +25,10 @@
                 { data: 'thumbnail', orderable: false, searchable: false, width: '10%' },
                 { data: 'name', name: 'translations.name', orderable: false, defaultContent: '' },
                 { data: 'price', searchable: false },
+                { data: 'ref', name:'ref', orderable: false, searchable: true }, // Add this line
+                { data: 'barcode', name: 'barcode', orderable: false, searchable: true }, // Add this line
                 { data: 'status', name: 'is_active', searchable: false },
                 { data: 'created', name: 'created_at' },
-                { data: 'barcode', name: 'barcode', orderable: false, searchable: true }, // Add this line
-                { data: 'ref', name:'ref', orderable: false, searchable: true }, // Add this line
             ],
         });
 

@@ -587,7 +587,12 @@ class Product extends Model
             ->withoutGlobalScope('locale')
             ->get(['name', 'description', 'short_description']);
 
-        return ['id' => $this->id, 'translations' => $translations];
+        return [
+                'id' => $this->id, 
+                'translations' => $translations,
+                'ref' => $this->ref,
+                'barcode' => $this->barcode,
+               ];
     }
 
     public function searchTable()
