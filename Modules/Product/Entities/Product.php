@@ -37,7 +37,7 @@ class Product extends Model
      *
      * @var array
      */
-    protected $fillable = ['brand_id', 'tax_class_id', 'slug', 'sku', 'price', 'special_price', 'special_price_type', 'special_price_start', 'special_price_end', 'selling_price', 'manage_stock', 'qty', 'in_stock', 'is_virtual', 'is_active', 'new_from', 'new_to', 'unit', 'barcode'];
+    protected $fillable = ['brand_id', 'tax_class_id', 'slug', 'sku', 'price', 'special_price', 'special_price_type', 'special_price_start', 'special_price_end', 'selling_price', 'manage_stock', 'qty', 'in_stock', 'is_virtual', 'is_active', 'new_from', 'new_to', 'unit', 'barcode', 'ref'];
 
     /**
      * The attributes that should be cast to native types.
@@ -154,12 +154,12 @@ class Product extends Model
             ->withPrice()
             ->withCount('options')
             ->with('reviews')
-            ->addSelect(['products.id', 'products.slug', 'products.in_stock', 'products.manage_stock', 'products.qty', 'products.new_from', 'products.new_to', 'products.unit', 'products.barcode']);
+            ->addSelect(['products.id', 'products.slug', 'products.in_stock', 'products.manage_stock', 'products.qty', 'products.new_from', 'products.new_to', 'products.unit', 'products.barcode', 'products.ref']);
     }
 
     public function scopeWithPrice($query)
     {
-        $query->addSelect(['products.price', 'products.special_price', 'products.special_price_type', 'products.selling_price', 'products.special_price_start', 'products.special_price_end', 'products.barcode']);
+        $query->addSelect(['products.price', 'products.special_price', 'products.special_price_type', 'products.selling_price', 'products.special_price_start', 'products.special_price_end', 'products.barcode', , 'products.ref']);
     }
 
     public function scopeWithName($query)
