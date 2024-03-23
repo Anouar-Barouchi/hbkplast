@@ -27,7 +27,25 @@
                 { data: 'price', searchable: false },
                 { data: 'status', name: 'is_active', searchable: false },
                 { data: 'created', name: 'created_at' },
+                {
+                    data: null,
+                    orderable: false,
+                    searchable: false,
+                    defaultContent: '',
+                    render: function (data, type, row) {
+                        return `<button onclick="printBarcode('${row.barcode}')">Print Barcode</button>`;
+                    },
+                },
             ],
         });
+
+        function printBarcode(barcode) {
+            const printWindow = window.open('', '_blank');
+            printWindow.document.write(`<html><head><title>Print Barcode</title></head><body><p>${barcode}</p></body></html>`);
+            printWindow.document.close();
+            printWindow.focus();
+            printWindow.print();
+            printWindow.close();
+        }
     </script>
 @endpush

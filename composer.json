@@ -21,6 +21,7 @@
         "laravel/tinker": "^2.7",
         "maatwebsite/laravel-sidebar": "^2.5",
         "mehedi/stylist": "dev-master",
+        "milon/barcode": "^11.0",
         "nwidart/laravel-modules": "^9.0",
         "swayok/alternative-laravel-cache": "^6.1",
         "swayok/cache-filesystem-adapter": "^1.3",
