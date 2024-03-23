@@ -607,7 +607,7 @@ class Product extends Model
 
     public function searchColumns()
     {
-        return ['name'];
+        return ['name', 'ref', 'barcode'];
     }
 
     public function searchExactColumn()
