@@ -55,6 +55,17 @@ class QueryStringFilter
         // Products are searched by relevant order by default.
     }
 
+    public function ref($query, $value)
+    {
+        $query->where('ref', 'like', "%{$value}%");
+    }
+
+    public function barcode($query, $value)
+    {
+        $query->where('barcode', 'like', "%{$value}%");
+    }
+
+    
     public function alphabetic($query)
     {
         $query->join('product_translations', function (JoinClause $join) {

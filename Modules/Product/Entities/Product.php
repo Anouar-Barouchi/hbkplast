@@ -612,7 +612,7 @@ class Product extends Model
 
     public function searchExactColumn()
     {
-        return 'ref';
+        return 'name';
     }
 }
 
