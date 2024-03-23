@@ -27,19 +27,10 @@
                 { data: 'price', searchable: false },
                 { data: 'status', name: 'is_active', searchable: false },
                 { data: 'created', name: 'created_at' },
-                { data: 'barcode', orderable: false, searchable: true }, // Add this line
-                { data: 'ref', orderable: false, searchable: true }, // Add this line
+                { data: 'barcode', name: 'barcode', orderable: false, searchable: true }, // Add this line
+                { data: 'ref', name:'ref', orderable: false, searchable: true }, // Add this line
             ],
         });
 
-        function printBarcode(barcode, event) {
-            event.stopPropagation(); // Prevent the event from propagating to parent elements
-
-            const printWindow = window.open('', '_blank');
-            printWindow.document.write(`<html><head><title>Print Barcode</title></head><body><p>${barcode}</p></body></html>`);
-            printWindow.document.close();
-            printWindow.focus();
-            printWindow.print();
-        }
     </script>
 @endpush
