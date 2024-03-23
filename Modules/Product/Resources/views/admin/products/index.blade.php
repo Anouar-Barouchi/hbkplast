@@ -33,6 +33,9 @@
                     searchable: false,
                     defaultContent: '',
                     render: function (data, type, row) {
+                        console.log('====================================');
+                        console.log(row);
+                        console.log('====================================');
                         return `<button onclick="printBarcode('${row.barcode}')">P</button>`;
                     },
                 },
