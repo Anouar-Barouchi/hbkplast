@@ -12,7 +12,7 @@ class ProductTable extends AdminTable
      *
      * @var array
      */
-    protected $rawColumns = ['price'];
+    protected $rawColumns = ['price', 'print_barcode'];
 
     /**
      * Make table response for the resource.
@@ -36,6 +36,14 @@ class ProductTable extends AdminTable
 
                     return "<span class='m-r-5'>{$price}</span>";
                 });
+            })
+            ->addColumn('print_barcode', function (Product $product) {
+                // Ensure you have a valid barcode value in your product
+                if (!empty($product->barcode)) {
+                    // Button that calls a JavaScript function 'printBarcode' with the product's barcode as argument
+                    return "<button onclick=\"printBarcode('{$product->barcode}')\">P</button>";
+                }
+                return 'No Barcode'; // Placeholder text or action if no barcode is available
             });
     }
 }

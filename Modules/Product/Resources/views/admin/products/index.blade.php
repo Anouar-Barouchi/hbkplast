@@ -27,18 +27,7 @@
                 { data: 'price', searchable: false },
                 { data: 'status', name: 'is_active', searchable: false },
                 { data: 'created', name: 'created_at' },
-                {
-                    data: null,
-                    orderable: false,
-                    searchable: false,
-                    defaultContent: '',
-                    render: function (data, type, row) {
-                        console.log('====================================');
-                        console.log(row);
-                        console.log('====================================');
-                        return `<button onclick="printBarcode('${row.barcode}')">P</button>`;
-                    },
-                },
+                { data: 'print_barcode', orderable: false, searchable: false }, // Add this line
             ],
         });
 
