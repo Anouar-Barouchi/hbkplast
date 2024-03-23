@@ -12,7 +12,7 @@ class ProductTable extends AdminTable
      *
      * @var array
      */
-    protected $rawColumns = ['price'];
+    protected $rawColumns = ['price', 'barcode', 'ref'];
 
     /**
      * Make table response for the resource.
@@ -36,6 +36,12 @@ class ProductTable extends AdminTable
 
                     return "<span class='m-r-5'>{$price}</span>";
                 });
+            })
+            ->addColumn('ref', function ($product) {
+                return $product->ref;
+            })
+            ->addColumn('barcode', function ($product) {
+                return $product->barcode;
             });
     }
 }

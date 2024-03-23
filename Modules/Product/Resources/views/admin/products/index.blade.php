@@ -27,7 +27,8 @@
                 { data: 'price', searchable: false },
                 { data: 'status', name: 'is_active', searchable: false },
                 { data: 'created', name: 'created_at' },
-                { data: 'print_barcode', orderable: false, searchable: false }, // Add this line
+                { data: 'barcode', orderable: false, searchable: true }, // Add this line
+                { data: 'ref', orderable: false, searchable: true }, // Add this line
             ],
         });
 
