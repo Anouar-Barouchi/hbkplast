@@ -65,7 +65,7 @@ class QueryStringFilter
         $query->where('barcode', 'like', "%{$value}%");
     }
 
-    
+
     public function alphabetic($query)
     {
         $query->join('product_translations', function (JoinClause $join) {
