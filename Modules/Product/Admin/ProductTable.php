@@ -12,7 +12,7 @@ class ProductTable extends AdminTable
      *
      * @var array
      */
-    protected $rawColumns = ['price', 'print_barcode'];
+    protected $rawColumns = ['price'];
 
     /**
      * Make table response for the resource.
@@ -36,9 +36,6 @@ class ProductTable extends AdminTable
 
                     return "<span class='m-r-5'>{$price}</span>";
                 });
-            })
-            ->addColumn('print_barcode', function ($product) {
-                return '<a href="'.route('products.print-barcode', $product).'" target="_blank">P</a>';
             });
     }
 }

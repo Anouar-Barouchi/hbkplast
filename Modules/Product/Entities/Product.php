@@ -98,25 +98,25 @@ class Product extends Model
         static::addActiveGlobalScope();
     }
     
-    protected static function boot()
-    {
-        parent::boot();
+    // protected static function boot()
+    // {
+    //     parent::boot();
 
-        static::creating(function ($product) {
-            if (empty($product->barcode)) {
-                $product->barcode = self::generateUniqueBarcode();
-            }
-        });
-    }
+    //     static::creating(function ($product) {
+    //         if (empty($product->barcode)) {
+    //             $product->barcode = self::generateUniqueBarcode();
+    //         }
+    //     });
+    // }
 
-    protected static function generateUniqueBarcode()
-    {
-        $barcode = rand(1000000000, 9999999999); // Example simple generation logic
-        while (self::where('barcode', $barcode)->exists()) {
-            $barcode = rand(1000000000, 9999999999); // Ensure uniqueness
-        }
-        return $barcode;
-    }
+    // protected static function generateUniqueBarcode()
+    // {
+    //     $barcode = rand(1000000000, 9999999999); // Example simple generation logic
+    //     while (self::where('barcode', $barcode)->exists()) {
+    //         $barcode = rand(1000000000, 9999999999); // Ensure uniqueness
+    //     }
+    //     return $barcode;
+    // }
 
     
 
