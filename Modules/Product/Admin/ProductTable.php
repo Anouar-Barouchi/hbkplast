@@ -39,6 +39,6 @@ class ProductTable extends AdminTable
             })
             ->addColumn('print_barcode', function ($product) {
                 return '<button onclick="printBarcode(\'' . $product->barcode . '\', event)">Print Barcode</button>';
-            })
+            });
     }
 }
