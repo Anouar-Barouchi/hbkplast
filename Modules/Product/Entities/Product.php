@@ -562,34 +562,17 @@ class Product extends Model
      */
     public function table($request)
     {
-        if ($request->has('search.value')) {
-            $query = $this->query()->where(function($query) use ($request) {
-                $query->newQuery()
-                ->orWhere('barcode', 'LIKE', '%' . request('search.value') . '%')
-                ->orWhere('ref', 'LIKE', '%' . request('search.value') . '%');
-            })
-            ->withoutGlobalScope('active')
-            ->withName()
-            ->withBaseImage()
-            ->withPrice()
-            ->addSelect(['id', 'barcode', 'is_active', 'created_at'])
-            ->when($request->has('except'), function ($query) use ($request) {
-                $query->whereNotIn('id', explode(',', $request->except));
-            });
-        } else {
-            $query = $this->newQuery()
-            ->withoutGlobalScope('active')
-            ->withName()
-            ->withBaseImage()
-            ->withPrice()
-            ->addSelect(['id', 'barcode', 'is_active', 'created_at'])
-            ->when($request->has('except'), function ($query) use ($request) {
-                $query->whereNotIn('id', explode(',', $request->except));
-            });
-        }
         
-        
-
+        $query = $this->newQuery()
+                        ->withoutGlobalScope('active')
+                        ->withName()
+                        ->withBaseImage()
+                        ->withPrice()
+                        ->addSelect(['id', 'barcode', 'is_active', 'created_at'])
+                        ->when($request->has('except'), function ($query) use ($request) {
+                            $query->whereNotIn('id', explode(',', $request->except));
+                        });
+    
         return new ProductTable($query);
     }
 
@@ -644,7 +627,7 @@ class Product extends Model
 
     public function searchColumns()
     {
-        return ['name']; // , 'products.ref', 'products.barcode'
+        return ['name', 'ref', 'barcode']; // , 'products.ref', 'products.barcode'
     }
 
     public function searchExactColumn()

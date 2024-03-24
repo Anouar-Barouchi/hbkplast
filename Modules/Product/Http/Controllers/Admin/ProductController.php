@@ -43,25 +43,6 @@ class ProductController
     protected $validation = SaveProductRequest::class;
 
 
-    public function index(Request $request)
-    {
-        if ($request->has('query')) {
-            return $this->getModel()
-                ->search($request->get('query'))
-                ->query()
-                // ->orWhere('ref', 'LIKE', '%' . request('search.value') . '%')
-                // ->orWhere('barcode', 'LIKE', '%' . request('search.value') . '%')
-                ->limit($request->get('limit', 10))
-                ->get();
-        }
-        
-        if ($request->has('table')) {
-            // return $request->all();
-            return $this->getModel()->table($request);
-        }
-
-        return view("{$this->viewPath}.index");
-    }
 
 
     public function printBarcode(Product $product)
