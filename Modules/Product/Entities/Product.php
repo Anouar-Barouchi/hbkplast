@@ -546,7 +546,7 @@ class Product extends Model
     public function table($request)
     {
         if ($request->has('search.value')) {
-            $this->where(function($query) use ($request) {
+            $this->query()->where(function($query) use ($request) {
                 $query->newQuery()
                 ->orWhere('barcode', 'LIKE', '%' . request('search.value') . '%')
                 ->orWhere('ref', 'LIKE', '%' . request('search.value') . '%');
