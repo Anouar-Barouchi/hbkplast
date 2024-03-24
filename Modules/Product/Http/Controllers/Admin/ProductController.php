@@ -7,6 +7,8 @@ use Modules\Admin\Traits\HasCrudActions;
 use Modules\Product\Http\Requests\SaveProductRequest;
 use PDF;
 use DNS1D;
+use Illuminate\Http\Request;
+
 
 class ProductController
 {
@@ -39,6 +41,26 @@ class ProductController
      * @var array|string
      */
     protected $validation = SaveProductRequest::class;
+
+
+    public function index(Request $request)
+    {
+        if ($request->has('query')) {
+            return $this->getModel()
+                ->search($request->get('query'))
+                ->query()
+                ->orWhere('ref', 'LIKE', '%' . $request->query . '%')
+                ->orWhere('barcode', 'LIKE', '%' . $request->query . '%')
+                ->limit($request->get('limit', 10))
+                ->get();
+        }
+
+        if ($request->has('table')) {
+            return $this->getModel()->table($request);
+        }
+
+        return view("{$this->viewPath}.index");
+    }
 
 
     public function printBarcode(Product $product)
