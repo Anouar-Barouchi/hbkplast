@@ -547,8 +547,8 @@ class Product extends Model
     {
         $query = $this->newQuery()
             ->when($request->has('search.value'), function ($query) use ($request) {
-                $query->where('ref', 'LIKE', '%' . request('search.value') . '%')
-                        ->orWhere('barcode', 'LIKE', '%' . request('search.value') . '%');
+                $query->where('barcode', 'LIKE', '%' . request('search.value') . '%');
+                ->orWhere('ref', 'LIKE', '%' . request('search.value') . '%');
             })
             ->withoutGlobalScope('active')
             ->withName()
