@@ -98,16 +98,33 @@ class Product extends Model
         static::addActiveGlobalScope();
     }
     
-    // protected static function boot()
-    // {
-    //     parent::boot();
+    protected static function boot()
+    {
+        parent::boot();
 
-    //     static::creating(function ($product) {
-    //         if (empty($product->barcode)) {
-    //             $product->barcode = self::generateUniqueBarcode();
-    //         }
-    //     });
-    // }
+        static::creating(function ($product) {
+            foreach ($product->translations as $translation) {
+                $translation->ref = $product->ref;
+                $translation->barcode = $product->barcode;
+            }
+        });
+
+        static::updating(function ($product) {
+            // Check if 'ref' or 'barcode' has been changed
+            if ($product->isDirty('ref') || $product->isDirty('barcode')) {
+                foreach ($product->translations as $translation) {
+                    // Update only if changed to avoid unnecessary database operations
+                    if ($product->isDirty('ref')) {
+                        $translation->ref = $product->ref;
+                    }
+                    if ($product->isDirty('barcode')) {
+                        $translation->barcode = $product->barcode;
+                    }
+                    $translation->save();
+                }
+            }
+        });
+    }
 
     // protected static function generateUniqueBarcode()
     // {
