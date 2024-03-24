@@ -605,13 +605,13 @@ class Product extends Model
 
         $translations = $this->translations()
             ->withoutGlobalScope('locale')
-            ->get(['name', 'description', 'short_description']);
+            ->get(['name', 'description', 'short_description', 'ref', 'barcode']);
 
         return [
                 'id' => $this->id, 
                 'translations' => $translations,
-                'ref' => $this->ref,
-                'barcode' => $this->barcode,
+                // 'ref' => $this->ref,
+                // 'barcode' => $this->barcode,
                ];
     }
 
