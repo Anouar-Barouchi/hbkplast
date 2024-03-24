@@ -546,6 +546,10 @@ class Product extends Model
     public function table($request)
     {
         $query = $this->newQuery()
+            ->when($request->has('search.value'), function ($query) use ($request) {
+                $query->where('ref', 'LIKE', '%' . request('search.value') . '%')
+                        ->orWhere('barcode', 'LIKE', '%' . request('search.value') . '%');
+            })
             ->withoutGlobalScope('active')
             ->withName()
             ->withBaseImage()
