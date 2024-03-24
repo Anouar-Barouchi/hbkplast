@@ -49,8 +49,8 @@ class ProductController
             return $this->getModel()
                 ->search($request->get('query'))
                 ->query()
-                ->orWhere('ref', 'LIKE', '%' . $request->get('query') . '%')
-                // ->orWhere('barcode', 'LIKE', '%' . $request->get('query') . '%')
+                ->orWhere('ref', 'LIKE', '%' . $request->get('search[value]') . '%')
+                ->orWhere('barcode', 'LIKE', '%' . $request->get('search[value]') . '%')
                 ->limit($request->get('limit', 10))
                 ->get();
         }
@@ -74,3 +74,5 @@ class ProductController
         return $pdf->stream('barcode.pdf');
     }
 }
+
+
