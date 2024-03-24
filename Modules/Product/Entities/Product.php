@@ -610,8 +610,8 @@ class Product extends Model
         return [
                 'id' => $this->id, 
                 'translations' => $translations,
-                // 'ref' => $this->ref,
-                // 'barcode' => $this->barcode,
+                'ref' => $this->ref,
+                'barcode' => $this->barcode,
                ];
     }
 
