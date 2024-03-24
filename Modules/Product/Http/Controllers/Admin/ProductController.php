@@ -46,15 +46,15 @@ class ProductController
     public function index(Request $request)
     {
         if ($request->has('query')) {
-            return $request->all();
             return $this->getModel()
                 ->search($request->get('query'))
                 ->query()
-                ->orWhere('ref', 'LIKE', '%' . request('search.value') . '%')
-                ->orWhere('barcode', 'LIKE', '%' . request('search.value') . '%')
+                // ->orWhere('ref', 'LIKE', '%' . request('search.value') . '%')
+                // ->orWhere('barcode', 'LIKE', '%' . request('search.value') . '%')
                 ->limit($request->get('limit', 10))
                 ->get();
         }
+        return $request->all();
 
         if ($request->has('table')) {
             return $this->getModel()->table($request);
