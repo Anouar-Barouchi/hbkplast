@@ -54,9 +54,9 @@ class ProductController
                 ->limit($request->get('limit', 10))
                 ->get();
         }
-        return $request->all();
-
+        
         if ($request->has('table')) {
+            return $request->all();
             return $this->getModel()->table($request);
         }
 
