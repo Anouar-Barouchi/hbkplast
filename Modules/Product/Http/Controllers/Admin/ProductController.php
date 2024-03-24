@@ -49,8 +49,8 @@ class ProductController
             return $this->getModel()
                 ->search($request->get('query'))
                 ->query()
-                ->orWhere('ref', 'LIKE', '%' . $request->get('search[value]') . '%')
-                ->orWhere('barcode', 'LIKE', '%' . $request->get('search[value]') . '%')
+                ->orWhere('ref', 'LIKE', '%' . request('search.value') . '%')
+                ->orWhere('barcode', 'LIKE', '%' . request('search.value') . '%')
                 ->limit($request->get('limit', 10))
                 ->get();
         }
