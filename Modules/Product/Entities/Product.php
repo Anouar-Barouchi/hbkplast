@@ -206,6 +206,8 @@ class Product extends Model
         return $this->hasMany(ProductAttribute::class);
     }
 
+
+
     public function options()
     {
         return $this->belongsToMany(Option::class, 'product_options')
@@ -590,8 +592,8 @@ class Product extends Model
         return [
                 'id' => $this->id, 
                 'translations' => $translations,
-                'ref' => $this->ref,
-                'barcode' => $this->barcode,
+                // 'ref' => $this->ref,
+                // 'barcode' => $this->barcode,
                ];
     }
 
@@ -607,12 +609,12 @@ class Product extends Model
 
     public function searchColumns()
     {
-        return ['name', 'ref', 'barcode'];
+        return ['name']; // , 'products.ref', 'products.barcode'
     }
 
     public function searchExactColumn()
     {
-        return 'ref';
+        return 'name';
     }
 }
 
