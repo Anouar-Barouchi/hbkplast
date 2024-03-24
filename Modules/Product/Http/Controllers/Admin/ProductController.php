@@ -56,7 +56,7 @@ class ProductController
         }
         
         if ($request->has('table')) {
-            return $request->all();
+            // return $request->all();
             return $this->getModel()->table($request);
         }
 
