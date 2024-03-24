@@ -545,19 +545,33 @@ class Product extends Model
      */
     public function table($request)
     {
-        $query = $this->newQuery()
-            ->when($request->has('search.value'), function ($query) use ($request) {
-                $query->orWhere('barcode', 'LIKE', '%' . request('search.value') . '%')
+        if ($request->has('search.value')) {
+            $this->where(function($query) use ($request) {
+                $query->newQuery()
+                ->orWhere('barcode', 'LIKE', '%' . request('search.value') . '%')
                 ->orWhere('ref', 'LIKE', '%' . request('search.value') . '%');
             })
             ->withoutGlobalScope('active')
             ->withName()
             ->withBaseImage()
             ->withPrice()
-            ->addSelect(['id', 'ref', 'barcode', 'is_active', 'created_at'])
+            ->addSelect(['id', 'barcode', 'is_active', 'created_at'])
             ->when($request->has('except'), function ($query) use ($request) {
                 $query->whereNotIn('id', explode(',', $request->except));
             });
+        } else {
+            $query = $this->newQuery()
+            ->withoutGlobalScope('active')
+            ->withName()
+            ->withBaseImage()
+            ->withPrice()
+            ->addSelect(['id', 'barcode', 'is_active', 'created_at'])
+            ->when($request->has('except'), function ($query) use ($request) {
+                $query->whereNotIn('id', explode(',', $request->except));
+            });
+        }
+        
+        
 
         return new ProductTable($query);
     }
