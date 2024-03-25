@@ -6,5 +6,7 @@
     <th>{{ trans('product::products.table.name') }}</th>
     <th>{{ trans('product::products.table.price') }}</th>
     <th>{{ trans('admin::admin.table.status') }}</th>
+    <th>{{ trans('product::products.table.ref') }}</th>
+    <th>{{ trans('product::products.table.barcode') }}</th>
     <th data-sort>{{ trans('admin::admin.table.created') }}</th>
 </tr>

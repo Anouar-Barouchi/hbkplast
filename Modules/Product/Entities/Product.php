@@ -563,15 +563,50 @@ class Product extends Model
     public function table($request)
     {
         
-        $query = $this->newQuery()
+        
+                        
+                        // ->when($request->has('search.value'), function ($query) use ($request) {
+                        //     $query->orWhere(function ($query) {
+                        //         $query->where('barcode', 'LIKE', '%' . request('search.value') . '%')
+                        //           ->orWhere('ref', 'LIKE', '%' . request('search.value') . '%');
+                        //     });
+                        // });
+
+        // if ($request->has('search.value')) {
+        //     $searchValue = '%' . $request->input('search.value') . '%';
+        //     $query = $this->query()
+        //                     ->where(function ($query) use ($request) {
+        //                         $query->newQuery()
+        //                             ->withoutGlobalScope('active')
+        //                             ->withName()
+        //                             ->withBaseImage()
+        //                             ->withPrice()
+        //                             ->addSelect(['id', 'barcode', 'ref', 'is_active', 'created_at'])
+        //                             ->when($request->has('except'), function ($query) use ($request) {
+        //                                 $query->whereNotIn('id', explode(',', $request->except));
+        //                             });
+        //                     })
+        //                     ->orWhere(function ($query) use ($searchValue) {
+        //                         $query->where('ref', 'LIKE', $searchValue)
+        //                             ->orWhere('barcode', 'LIKE', $searchValue);
+        //                     });
+
+        //     // Use a nested query to group the OR conditions together
+        //     // $query->orWhere(function ($query) use ($searchValue) {
+        //     //     $query->where('ref', 'LIKE', $searchValue)
+        //     //         ->orWhere('barcode', 'LIKE', $searchValue);
+        //     // });
+        // } else {
+            $query = $this->newQuery()
                         ->withoutGlobalScope('active')
                         ->withName()
                         ->withBaseImage()
                         ->withPrice()
-                        ->addSelect(['id', 'barcode', 'is_active', 'created_at'])
+                        ->addSelect(['id', 'barcode', 'ref', 'is_active', 'created_at'])
                         ->when($request->has('except'), function ($query) use ($request) {
                             $query->whereNotIn('id', explode(',', $request->except));
                         });
+        // }              
     
         return new ProductTable($query);
     }
@@ -610,8 +645,8 @@ class Product extends Model
         return [
                 'id' => $this->id, 
                 'translations' => $translations,
-                // 'ref' => $this->ref,
-                // 'barcode' => $this->barcode,
+                'ref' => $translations->ref,
+                'barcode' => $translations->barcode,
                ];
     }
 

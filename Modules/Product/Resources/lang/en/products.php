@@ -7,6 +7,8 @@ return [
         'thumbnail' => 'Thumbnail',
         'name' => 'Name',
         'price' => 'Price',
+        'ref' => 'Ref',
+        'barcode' => 'Barcode'
     ],
     'tabs' => [
         'group' => [

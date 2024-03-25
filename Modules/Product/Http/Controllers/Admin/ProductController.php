@@ -43,6 +43,7 @@ class ProductController
     protected $validation = SaveProductRequest::class;
 
 
+    
 
 
     public function printBarcode(Product $product)
