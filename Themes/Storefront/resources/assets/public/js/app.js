@@ -38,6 +38,8 @@ import CompareIndex from "./components/compare/Index";
 import MyWishlist from "./components/account/wishlist/Index";
 import MyAddresses from "./components/account/addresses/Index";
 import ProductModal from "./components/ProductModal.vue";
+// import CategorySwiper from './components/CategorySwiper.vue';
+
 
 Vue.prototype.route = route;
 Vue.prototype.$notify = notify;
@@ -80,6 +82,11 @@ Vue.component("compare-index", CompareIndex);
 Vue.component("my-wishlist", MyWishlist);
 Vue.component("my-addresses", MyAddresses);
 Vue.component("product-modal", ProductModal);
+// Vue.component('category-swiper', CategorySwiper);
+
+Vue.prototype.$isUserLoggedIn = window.Laravel.isUserLoggedIn;
+
+
 
 new Vue({
     el: "#app",

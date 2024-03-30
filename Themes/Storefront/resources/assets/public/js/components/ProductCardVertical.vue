@@ -9,7 +9,7 @@
                 <h6>{{ product.name }}</h6>
             </a>
 
-            <div class="product-price" v-html="product.formatted_price"></div>
+            <div class="product-price" v-if="this.$isUserLoggedIn" v-html="product.formatted_price"></div>
 
             <ProductRating :ratingPercent="product.rating_percent" :reviewCount="product.reviews.length"/>
         </div>

@@ -8,9 +8,37 @@
 <home-features :features="{{ json_encode($features) }}"></home-features>
 @endif
 
+
 @if (setting('storefront_featured_categories_section_enabled'))
 <featured-categories :data="{{ json_encode($featuredCategories) }}" @open-modal="openModal"></featured-categories>
 @endif
+
+
+<div class="p-5">
+    <div class="swiper-container p-2 d-none">
+        <div class="swiper-wrapper">
+            @foreach ($categories as $category)
+            <div class="swiper-slide">
+                <a
+                href="{{ route('categories.products.index', ['category' => $category->slug]) }}"
+                >
+                    @if ($category->logo->path)
+                    <img class=" mw-100" src="{{ $category->logo->path }}" alt="">
+                    @else
+                    <img class=" mw-100" src="{{ asset('image.png') }}" alt="">
+                    @endif
+                    <span>{{ $category->name }}</span>
+                </a>
+            </div>
+            @endforeach
+            
+            <!-- Add more slides as needed -->
+        </div>
+        
+
+        <div class="swiper-pagination"></div>
+    </div>
+</div>
 
 @if (setting('storefront_three_column_full_width_banners_enabled'))
 <banner-three-column-full-width :data="{{ json_encode($threeColumnFullWidthBanners) }}">

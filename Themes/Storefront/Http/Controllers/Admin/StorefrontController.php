@@ -16,9 +16,11 @@ class StorefrontController
     {
         $settings = setting()->all();
         $tabs = TabManager::get('storefront');
+        // dd($tabs);
 
         return view('admin.storefront.edit', compact('settings', 'tabs'));
     }
+
 
     /**
      * Update the specified resource in storage.

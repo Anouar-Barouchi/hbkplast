@@ -9,3 +9,4 @@
         {{ Form::select('storefront_footer_menu_two', trans('storefront::attributes.storefront_footer_menu_two'), $errors, $menus, $settings) }}
     </div>
 </div>
+

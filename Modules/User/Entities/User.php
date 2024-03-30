@@ -3,6 +3,7 @@
 namespace Modules\User\Entities;
 
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Modules\City\Entities\City;
 use Modules\Order\Entities\Order;
 use Modules\State\Entities\State;
@@ -282,5 +283,15 @@ class User extends EloquentUser implements AuthenticatableContract
     public function city(): BelongsTo
     {
         return $this->belongsTo(City::class, 'city_id', 'id');
+    }
+
+    /**
+     * Get the wallet associated with the User
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    public function wallet(): HasOne
+    {
+        return $this->hasOne(Wallet::class, 'user_id', 'id');
     }
 }

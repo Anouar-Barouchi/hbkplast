@@ -40,6 +40,16 @@ class ApiAuthController extends Controller
         return Auth::guard('api')->user();
     }
 
+    function userWallet(Request $request) {
+        $user = Auth::guard('api')->user();
+        $wallet = $user->wallet;
+        $transactions = $wallet->transactions()->paginate(20);
+        return response()->json([
+            'success' => true,
+            'data' => compact('wallet', 'transactions'),
+        ]);
+    }
+
     function login(Request $request) {
         $validator = Validator::make($request->all(), [
             'email'     => ['required', 'email'],

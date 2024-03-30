@@ -25,6 +25,7 @@
         "vue-template-compiler": "^2.7.14"
     },
     "dependencies": {
+        "swiper": "^11.0.7",
         "vue-js-modal": "^2.0.1"
     }
 }

@@ -3,6 +3,7 @@
         {{ trans('storefront::layout.all_categories_header') }}
         <i class="las la-bars"></i>
     </div>
+    
 
     @if ($categoryMenu->menus()->isNotEmpty())
         <div class="category-dropdown-wrap">

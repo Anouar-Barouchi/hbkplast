@@ -15,6 +15,7 @@
                 'featuredCategories' => true,
             ])
         </div>
+        
 
         <div class="box-content clearfix">
             <h4 class="section-title">{{ trans('storefront::storefront.form.category_2') }}</h4>

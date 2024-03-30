@@ -26,7 +26,7 @@
                     {{ $trans('storefront::product_card.new') }}
                 </li>
 
-                <li class="badge badge-success" v-if="product.has_percentage_special_price">
+                <li class="badge badge-success" v-if="product.has_percentage_special_price && this.$isUserLoggedIn">
                     -{{ product.special_price_percent }}%
                 </li>
             </ul>
@@ -39,11 +39,11 @@
                 <h6>{{ product.name }}</h6>
             </a>
 
-            <div class="product-price product-price-clone" v-html="product.formatted_price"></div>
+            <div class="product-price product-price-clone" v-if="this.$isUserLoggedIn" v-html="product.formatted_price"></div>
         </div>
 
         <div class="product-card-bottom">
-            <div class="product-price" v-html="product.formatted_price"></div>
+            <div class="product-price" v-if="this.$isUserLoggedIn" v-html="product.formatted_price"></div>
 
             <button v-if="hasNoOption || product.is_out_of_stock" class="btn btn-primary btn-add-to-cart"
                 :class="{ 'btn-loading': addingToCart }" :disabled="product.is_out_of_stock" @click="openModal(baseImage, product)">
@@ -81,5 +81,6 @@ export default {
         product: Object,      // Explicitly specify the type
         showModal: Boolean,
     },
+    
 };
 </script>

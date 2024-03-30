@@ -34,7 +34,21 @@ class HomePageComposer
             'threeColumnBanners' => $this->threeColumnBanners(),
             'tabProductsTwo' => $this->tabProductsTwo(),
             'oneColumnBanner' => $this->oneColumnBanner(),
+            'categoriesData' => $this->CategoriesSwiper(),
         ]);
+    }
+
+    private function CategoriesSwiper()
+    {
+        return Category::with('files')
+            ->limit(20)
+            ->get()
+            ->map(function ($category) {
+                return [
+                    'name' => $category->name,
+                    'logo' => $category->logo,
+                ];
+            });
     }
 
     private function featuredCategoriesSection()
@@ -49,6 +63,7 @@ class HomePageComposer
             'categories' => $this->getFeaturedCategories(),
         ];
     }
+
 
     private function getFeaturedCategories()
     {

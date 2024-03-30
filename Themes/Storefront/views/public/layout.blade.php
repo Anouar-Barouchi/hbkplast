@@ -15,6 +15,15 @@
     </title>
 
     @stack('meta')
+    <link media="all" type="text/css" rel="stylesheet" href="//localhost:8000/modules/admin/css/admin.css?v=66083e2978f2a">
+    <link media="all" type="text/css" rel="stylesheet" href="//localhost:8000/modules/category/admin/css/category.css?v=66083e2978f34">
+    <link media="all" type="text/css" rel="stylesheet" href="//localhost:8000/modules/media/admin/css/media.css?v=66083e2978f3a">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" /><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- Swiper CSS -->
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/swiper/swiper-bundle.min.css"
+    />
 
     <link href="https://fonts.googleapis.com/css?family=Rubik:300,400,500&display=swap" rel="stylesheet">
 
@@ -27,6 +36,15 @@
     <link rel="shortcut icon" href="{{ $favicon }}" type="image/x-icon">
 
     @stack('styles')
+    <style>
+        .swiper-slide {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+    </style>
 
     {!! setting('custom_header_assets') !!}
 
@@ -107,13 +125,66 @@
         
     </div>
 
-    
+    <script>
+        window.Laravel = {!! json_encode([
+            'isUserLoggedIn' => Auth::check(),
+        ]) !!};
+    </script>
 
     @stack('pre-scripts')
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <!-- Swiper JS -->
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
 
     <script src="{{ v(Theme::url('public/js/app.js')) }}"></script>
 
     @stack('scripts')
+    
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            var swiper = new Swiper('.swiper-container', {
+                loop: true,
+                slidesPerView: 5,
+                spaceBetween: 30,
+                
+                // Enable navigation
+                navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+                },
+
+                breakpoints: {
+                    // when window width is >= 320px
+                    320: {
+                        slidesPerView: 2,
+                        spaceBetween: 20
+                    },
+                    // when window width is >= 480px
+                    480: {
+                        slidesPerView: 4,
+                        spaceBetween: 30
+                    },
+                    // when window width is >= 640px
+                    640: {
+                        slidesPerView: 6,
+                        spaceBetween: 40
+                    }
+                },
+                
+                autoplay: {
+                    delay: 1000, // Delay in milliseconds between slides
+                    disableOnInteraction: true, // Autoplay will not be disabled after user interactions
+                },
+    
+            });
+
+            $('.swiper-container').removeClass('d-none');
+
+        });
+      </script>
 
     {!! setting('custom_footer_assets') !!}
 </body>

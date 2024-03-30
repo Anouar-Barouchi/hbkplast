@@ -11,6 +11,7 @@
     </ol>
 @endsection
 
+
 @section('content')
     <form method="POST" action="{{ route('admin.storefront.settings.update') }}" class="form-horizontal" id="storefront-settings-edit-form" novalidate>
         {{ csrf_field() }}
