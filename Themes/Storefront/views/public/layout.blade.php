@@ -15,9 +15,6 @@
     </title>
 
     @stack('meta')
-    <link media="all" type="text/css" rel="stylesheet" href="//localhost:8000/modules/admin/css/admin.css?v=66083e2978f2a">
-    <link media="all" type="text/css" rel="stylesheet" href="//localhost:8000/modules/category/admin/css/category.css?v=66083e2978f34">
-    <link media="all" type="text/css" rel="stylesheet" href="//localhost:8000/modules/media/admin/css/media.css?v=66083e2978f3a">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" /><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <!-- Swiper CSS -->
     <link
