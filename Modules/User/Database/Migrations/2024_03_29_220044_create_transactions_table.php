@@ -17,7 +17,7 @@ return new class extends Migration
             // $table->id();
             // $table->dropForeign('transactions_order_id_foreign');
             $table->unsignedBigInteger('user_id');
-            $table->unsignedBigInteger('order_id')->nullable()->change();
+            // $table->unsignedBigInteger('order_id')->nullable()->change();
             $table->string('transaction_id')->nullable()->change();
             $table->string('payment_method')->nullable()->change();
             $table->string('type');
