@@ -7,8 +7,8 @@ public/.htaccess
 node_modules/
 /vendor/
 /public/storage/
-/public/modules/
-/public/themes/
+# /public/modules/
+# /public/themes/
 /storage/logs/*
 public/phplog
 /tags
