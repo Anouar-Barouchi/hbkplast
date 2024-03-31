@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::table('transactions', function (Blueprint $table) {
             // $table->id();
-            $table->dropForeign('transactions_order_id_foreign');
+            // $table->dropForeign('transactions_order_id_foreign');
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('order_id')->nullable()->change();
             $table->string('transaction_id')->nullable()->change();
