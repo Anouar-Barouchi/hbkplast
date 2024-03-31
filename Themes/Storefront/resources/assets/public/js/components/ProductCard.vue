@@ -1,8 +1,16 @@
 <template>
     <div class="product-card">
         <div class="product-card-top">
-            <a class="product-image" @click="openModal(baseImage, product)">
+            <!-- <a class="product-image" @click="openModal(baseImage, product)">
                 <img :src="baseImage" :class="{ 'image-placeholder': !hasBaseImage }" alt="product image">
+            </a> -->
+
+            <a :href="productUrl" class="product-image">
+                <img
+                    :src="baseImage"
+                    :class="{ 'image-placeholder': !hasBaseImage }"
+                    :alt="product.name"
+                />
             </a>
 
             <div class="product-card-actions">
