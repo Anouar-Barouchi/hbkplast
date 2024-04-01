@@ -104,7 +104,7 @@
                             </div>
 
                             <div class="details-info-middle">
-                                @if (\Auth::check())
+                                @if (Auth::user())
                                 <div class="product-price" v-html="price">
                                     {!! $product->formatted_price !!}
                                 </div>
