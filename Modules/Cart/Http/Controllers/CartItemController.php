@@ -38,6 +38,9 @@ class CartItemController extends Controller
      */
     public function store(StoreCartItemRequest $request)
     {
+        if(!\Auth::check()) {
+            throw new \Exception("Logged In first", 1);
+        }
         $product = Product::findOrFail($request->product_id);
         if (($request->qty % (int)$product->unit) != 0) {
             throw new \Exception("Quantity Missmatch", 1);
