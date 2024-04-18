@@ -37,10 +37,10 @@
 
 @push('scripts')
     <script>
-        DataTable.setRoutes('#orders-table .table', {
-            index: '{{ "admin.orders.index" }}',
-            show: '{{ "admin.orders.show" }}',
-        });
+        // DataTable.setRoutes('#orders-table .table', {
+        //     index: '{{ "admin.orders.index" }}',
+        //     show: '{{ "admin.orders.show" }}',
+        // });
 
         new DataTable('#orders-table .table', {
             columns: [
