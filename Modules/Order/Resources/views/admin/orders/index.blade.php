@@ -14,16 +14,16 @@
             @component('admin::components.page.index_table')
             @slot('name', trans('order::orders.orders'))
             @slot('resource', 'orders')
-                @slot('thead')
-                    <tr>
-                        <th>{{ trans('admin::admin.table.id') }}</th>
-                        <th>{{ trans('order::orders.table.customer_name') }}</th>
-                        <th>{{ trans('order::orders.table.customer_email') }}</th>
-                        <th>{{ trans('admin::admin.table.status') }}</th>
-                        <th>{{ trans('order::orders.table.total') }}</th>
-                        <th data-sort>{{ trans('admin::admin.table.created') }}</th>
-                    </tr>
-                @endslot
+            @slot('thead')
+                <tr>
+                    <th>{{ trans('admin::admin.table.id') }}</th>
+                    <th>{{ trans('order::orders.table.customer_name') }}</th>
+                    <th>{{ trans('order::orders.table.customer_email') }}</th>
+                    <th>{{ trans('admin::admin.table.status') }}</th>
+                    <th>{{ trans('order::orders.table.total') }}</th>
+                    <th data-sort>{{ trans('admin::admin.table.created') }}</th>
+                </tr>
+            @endslot
             @endcomponent
         </div>
     </div>
@@ -38,6 +38,7 @@
 
         new DataTable('#orders-table .table', {
             columns: [
+                { data: 'checkbox', orderable: false, searchable: false, width: '3%' },
                 { data: 'id', width: '5%' },
                 { data: 'customer_name', orderable: false, searchable: false },
                 { data: 'customer_email' },
