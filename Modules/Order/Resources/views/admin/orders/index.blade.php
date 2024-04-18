@@ -30,6 +30,7 @@
         DataTable.setRoutes('#orders-table .table', {
             index: '{{ "admin.orders.index" }}',
             show: '{{ "admin.orders.show" }}',
+            delete: '{{ "admin.orders.delete" }}',
         });
 
         new DataTable('#orders-table .table', {
