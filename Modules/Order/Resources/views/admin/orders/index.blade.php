@@ -16,6 +16,7 @@
             @slot('resource', 'orders')
             @slot('thead')
                 <tr>
+                    @include('admin::partials.table.select_all')
                     <th>{{ trans('admin::admin.table.id') }}</th>
                     <th>{{ trans('order::orders.table.customer_name') }}</th>
                     <th>{{ trans('order::orders.table.customer_email') }}</th>
