@@ -20,9 +20,9 @@ Route::put('orders/{order}/status', [
     'middleware' => 'can:admin.orders.edit',
 ]);
 
-Route::delete('orders/{order}/delete', [
-    'as' => 'admin.orders.delete',
-    'uses' => 'OrderStatusController@delete',
+Route::delete('orders/{ids?}', [
+    'as' => 'admin.orders.destroy',
+    'uses' => 'OrderController@destroy',
     'middleware' => 'can:admin.orders.edit',
 ]);
 
