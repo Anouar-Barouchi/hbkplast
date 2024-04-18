@@ -14,7 +14,6 @@
             @component('admin::components.page.index_table')
             @slot('name', trans('order::orders.orders'))
             @slot('resource', 'orders')
-            @slot('buttons', ['delete'])
                 @slot('thead')
                     <tr>
                         <th>{{ trans('admin::admin.table.id') }}</th>
