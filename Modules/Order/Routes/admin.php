@@ -20,6 +20,12 @@ Route::put('orders/{order}/status', [
     'middleware' => 'can:admin.orders.edit',
 ]);
 
+Route::delete('orders/{order}/delete', [
+    'as' => 'admin.orders.delete',
+    'uses' => 'OrderStatusController@delete',
+    'middleware' => 'can:admin.orders.edit',
+]);
+
 Route::post('orders/{order}/email', [
     'as' => 'admin.orders.email.store',
     'uses' => 'OrderEmailController@store',
