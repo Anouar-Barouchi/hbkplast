@@ -11,7 +11,10 @@
 @section('content')
     <div class="box box-primary">
         <div class="box-body index-table" id="orders-table">
-            @component('admin::components.table')
+            @component('admin::components.page.index_table')
+            @slot('name', trans('order::orders.orders'))
+            @slot('resource', 'orders')
+            @slot('buttons', ['delete'])
                 @slot('thead')
                     <tr>
                         <th>{{ trans('admin::admin.table.id') }}</th>
