@@ -142,6 +142,7 @@ class OrderController extends Controller
 
     public function storeCustomer(Request $request)
     {
+        return 'dsq';
         $user = Auth::guard('api')->user();
 
         if (!$user->isActivated()) {
