@@ -3,6 +3,7 @@
 @component('admin::components.page.header')
     @slot('title', trans('order::orders.orders'))
     @slot('resource', 'orders')
+    @slot('buttons', ['delete'])
 
     <li class="active">{{ trans('order::orders.orders') }}</li>
 @endcomponent
