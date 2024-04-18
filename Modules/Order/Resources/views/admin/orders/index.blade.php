@@ -16,7 +16,12 @@
             @slot('resource', 'orders')
             @slot('thead')
                 <tr>
-                    @include('admin::partials.table.select_all')
+                    <th>
+                        <div class="checkbox">
+                            <input type="checkbox" class="select-all" id="orders-select-all">
+                            <label for="orders-select-all"></label>
+                        </div>
+                    </th>
                     <th>{{ trans('admin::admin.table.id') }}</th>
                     <th>{{ trans('order::orders.table.customer_name') }}</th>
                     <th>{{ trans('order::orders.table.customer_email') }}</th>
