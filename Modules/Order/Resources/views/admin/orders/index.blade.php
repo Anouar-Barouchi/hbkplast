@@ -2,6 +2,7 @@
 
 @component('admin::components.page.header')
     @slot('title', trans('order::orders.orders'))
+    @slot('resource', 'orders')
 
     <li class="active">{{ trans('order::orders.orders') }}</li>
 @endcomponent
@@ -30,7 +31,6 @@
         DataTable.setRoutes('#orders-table .table', {
             index: '{{ "admin.orders.index" }}',
             show: '{{ "admin.orders.show" }}',
-            delete: '{{ "admin.orders.delete" }}',
         });
 
         new DataTable('#orders-table .table', {
