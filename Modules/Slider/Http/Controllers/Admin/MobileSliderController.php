@@ -1,6 +1,6 @@
 <?php
 
-namespace Modules\Slider\Http\Controllers;
+namespace Modules\Slider\Http\Controllers\Admin;
 
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
