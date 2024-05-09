@@ -13,14 +13,17 @@
         {{ csrf_field() }}
         <div class="media-picker-divider"></div>
         @include('media::admin.image_picker.multiple', [
-            'title' => trans('product::products.form.additional_images'),
+            'title' => trans('slider::sliders.images'),
             'inputName' => 'files[images][]',
             'files' => $slider->images,
         ])
+        <div class="media-picker-divider"></div>
 
-        <button type="submit" class="btn btn-lg btn-primary btn-save-changes" data-loading>
-            {{ trans('storefront::account.profile.save_changes') }}
-        </button>
+        <div class="mt-5">
+            <button type="submit" class="btn btn-lg btn-primary btn-save-changes" data-loading>
+                {{ trans('storefront::account.profile.save_changes') }}
+            </button>
+        </div>
         
     </form>
 @endsection
