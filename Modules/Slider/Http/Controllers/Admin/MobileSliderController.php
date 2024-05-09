@@ -29,7 +29,7 @@ class MobileSliderController extends Controller
         
 
         $entity->update(
-            request()->all()
+            request()->except('_token')
         );
 
         return redirect()->back();
