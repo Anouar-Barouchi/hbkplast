@@ -14,6 +14,12 @@ Route::get('mobile_sliders', [
     'middleware' => 'can:admin.sliders.edit',
 ]);
 
+Route::post('mobile_sliders', [
+    'as' => 'admin.mobile_sliders.store',
+    'uses' => 'MobileSliderController@post',
+    'middleware' => 'can:admin.sliders.edit',
+]);
+
 Route::get('sliders/create', [
     'as' => 'admin.sliders.create',
     'uses' => 'SliderController@create',
