@@ -1,3 +1,3 @@
 <?php
 
-Route::get('sliders', 'Admin/MobileSliderController@get');
+Route::get('sliders', 'Admin\MobileSliderController@get');
