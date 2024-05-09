@@ -15,7 +15,7 @@
         @include('media::admin.image_picker.multiple', [
             'title' => trans('product::products.form.additional_images'),
             'inputName' => 'files[additional_images][]',
-            'files' => [],
+            'files' => null,
         ])
         
     </form>
