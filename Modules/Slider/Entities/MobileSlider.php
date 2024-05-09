@@ -19,6 +19,17 @@ class MobileSlider extends Model
      */
     public function getImagesAttribute()
     {
-        return $this->files->where('pivot.zone', 'additional_images')->sortBy('pivot.id');
+        return $this->files->where('pivot.zone', 'images')->sortBy('pivot.id');
+    }
+
+    protected static function booted()
+    {
+        static::saved(function ($slider) {
+            if (!empty(request()->all())) {
+                $slider->saveRelations(request()->all());
+            }
+        });
+
+        static::addActiveGlobalScope();
     }
 }
