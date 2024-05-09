@@ -30,6 +30,5 @@ class MobileSlider extends Model
             }
         });
 
-        static::addActiveGlobalScope();
     }
 }
