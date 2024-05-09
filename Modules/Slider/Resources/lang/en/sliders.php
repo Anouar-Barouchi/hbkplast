@@ -3,6 +3,7 @@
 return [
     'slider' => 'Slider',
     'sliders' => 'Sliders',
+    'monile_sliders' => 'Mobile Sliders',
     'table' => [
         'name' => 'Name',
     ],
