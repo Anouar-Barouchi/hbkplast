@@ -21,5 +21,6 @@ class SliderServiceProvider extends ServiceProvider
         TabManager::register('sliders', SliderTabs::class);
 
         $this->addAdminAssets('admin.sliders.(create|edit)', ['admin.media.js', 'admin.slider.css', 'admin.slider.js']);
+        $this->addAdminAssets('admin.mobile_sliders.index', ['admin.media.css', 'admin.media.js', 'admin.slider.css', 'admin.slider.js']);
     }
 }

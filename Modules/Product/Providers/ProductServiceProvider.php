@@ -25,6 +25,7 @@ class ProductServiceProvider extends ServiceProvider
             'admin.media.css', 'admin.media.js', 'admin.product.css', 'admin.product.js',
         ]);
     }
+    
 
     /**
      * Register the service provider.
