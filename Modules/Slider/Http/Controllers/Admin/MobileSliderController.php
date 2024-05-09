@@ -10,7 +10,6 @@ use Modules\Slider\Entities\MobileSlider;
 
 class MobileSliderController extends Controller
 {
-    use HasCrudActions;
 
     /**
      * Display a listing of the resource.
@@ -33,6 +32,12 @@ class MobileSliderController extends Controller
         );
 
         return redirect()->back();
+    }
+
+    public function get()
+    {
+        $slider = MobileSlider::first();
+        return response()->json($slider->images);
     }
 
 
