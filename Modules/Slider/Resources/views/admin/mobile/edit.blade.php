@@ -12,10 +12,14 @@
     <form method="POST" action="{{ route('admin.sliders.update', $slider) }}" class="form-horizontal" id="slider-edit-form" novalidate>
         {{ csrf_field() }}
         {{ method_field('put') }}
-
-        {!! $tabs->render(compact('slider')) !!}
+        @include('media::admin.image_picker.multiple', [
+            'title' => trans('product::products.form.additional_images'),
+            'inputName' => 'files[additional_images][]',
+            'files' => [],
+        ])
+        
     </form>
 @endsection
 
-@include('slider::admin.sliders.partials.shortcuts')
+
 
