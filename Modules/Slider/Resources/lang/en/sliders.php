@@ -3,7 +3,7 @@
 return [
     'slider' => 'Slider',
     'sliders' => 'Sliders',
-    'monile_sliders' => 'Mobile Sliders',
+    'mobile_slider' => 'Mobile Sliders',
     'table' => [
         'name' => 'Name',
     ],
