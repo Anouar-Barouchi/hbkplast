@@ -12,5 +12,13 @@ class MobileSlider extends Model
 {
     use HasMedia;
 
-    
+    /**
+     * Get product's additional images.
+     *
+     * @return \Illuminate\Database\Eloquent\Collection
+     */
+    public function getAdditionalImagesAttribute()
+    {
+        return $this->files->where('pivot.zone', 'additional_images')->sortBy('pivot.id');
+    }
 }
