@@ -22,13 +22,5 @@ class MobileSlider extends Model
         return $this->files->where('pivot.zone', 'images')->sortBy('pivot.id');
     }
 
-    protected static function booted()
-    {
-        static::saved(function ($slider) {
-            if (!empty(request()->all())) {
-                $slider->saveRelations(request()->all());
-            }
-        });
-
-    }
+    
 }
