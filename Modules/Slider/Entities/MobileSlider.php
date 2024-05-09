@@ -17,7 +17,7 @@ class MobileSlider extends Model
      *
      * @return \Illuminate\Database\Eloquent\Collection
      */
-    public function getAdditionalImagesAttribute()
+    public function getImagesAttribute()
     {
         return $this->files->where('pivot.zone', 'additional_images')->sortBy('pivot.id');
     }
