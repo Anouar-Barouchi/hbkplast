@@ -20,7 +20,16 @@ class SidebarExtender extends BaseSidebarExtender
                         $this->auth->hasAccess('admin.sliders.index')
                     );
                 });
+                $item->item(trans('slider::sliders.mobile_slider'), function (Item $item) {
+                    $item->weight(5);
+                    $item->route('admin.mobile_sliders.index');
+                    $item->authorize(
+                        $this->auth->hasAccess('admin.sliders.edit')
+                    );
+                });
             });
         });
+
+       
     }
 }

@@ -8,6 +8,12 @@ Route::get('sliders', [
     'middleware' => 'can:admin.sliders.index',
 ]);
 
+Route::get('sliders', [
+    'as' => 'admin.sliders.index',
+    'uses' => 'MobileSliderController@index',
+    'middleware' => 'can:admin.sliders.edit',
+]);
+
 Route::get('sliders/create', [
     'as' => 'admin.sliders.create',
     'uses' => 'SliderController@create',
