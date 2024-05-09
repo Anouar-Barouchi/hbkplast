@@ -8,8 +8,8 @@ Route::get('sliders', [
     'middleware' => 'can:admin.sliders.index',
 ]);
 
-Route::get('sliders', [
-    'as' => 'admin.monile_sliders.index',
+Route::get('mobile_sliders', [
+    'as' => 'admin.mobile_sliders.index',
     'uses' => 'MobileSliderController@index',
     'middleware' => 'can:admin.sliders.edit',
 ]);
