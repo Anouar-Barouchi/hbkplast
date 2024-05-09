@@ -10,7 +10,7 @@ use Modules\Support\Eloquent\Translatable;
 
 class MobileSlider extends Model
 {
-    use Translatable, HasMedia;
+    use HasMedia;
 
     
 }
