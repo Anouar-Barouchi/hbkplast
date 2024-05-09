@@ -17,6 +17,10 @@
             'inputName' => 'files[images][]',
             'files' => $slider->images,
         ])
+
+        <button type="submit" class="btn btn-lg btn-primary btn-save-changes" data-loading>
+            {{ trans('storefront::account.profile.save_changes') }}
+        </button>
         
     </form>
 @endsection
