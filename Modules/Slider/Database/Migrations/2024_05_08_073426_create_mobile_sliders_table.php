@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Modules\Slider\Entities\MobileSlider;
 
 return new class extends Migration
 {
@@ -18,6 +19,9 @@ return new class extends Migration
             $table->string('name')->default('Mobile Slider');
             $table->timestamps();
         });
+
+        $m = new MobileSlider;
+        $m->save();
     }
 
     /**

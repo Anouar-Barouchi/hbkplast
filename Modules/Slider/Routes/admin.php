@@ -9,7 +9,7 @@ Route::get('sliders', [
 ]);
 
 Route::get('sliders', [
-    'as' => 'admin.sliders.index',
+    'as' => 'admin.monile_sliders.index',
     'uses' => 'MobileSliderController@index',
     'middleware' => 'can:admin.sliders.edit',
 ]);
