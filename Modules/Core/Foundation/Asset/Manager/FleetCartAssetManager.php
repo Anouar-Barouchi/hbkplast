@@ -39,6 +39,8 @@ class FleetCartAssetManager implements AssetManager
     {
         $extension = pathinfo($path, PATHINFO_EXTENSION);
 
+        $collection = collect();
+
         if ($extension === 'css') {
             $collection = $this->css;
         } elseif ($extension === 'js') {
