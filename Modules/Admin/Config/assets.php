@@ -12,7 +12,7 @@ return [
         'admin.js' => ['module' => 'admin:js/admin.js'],
         'admin.dashboard.css' => ['module' => 'admin:css/dashboard.css'],
         'admin.dashboard.js' => ['module' => 'admin:js/dashboard.js'],
-        'admin.polyfill.js' => ['cdn' => 'https://cdn.polyfill.io/v2/polyfill.min.js'],
+        'admin.polyfill.js' => ['cdn' => 'https://unpkg.com/@babel/polyfill@7.12.1/dist/polyfill.min.js'],
     ],
 
     /*
